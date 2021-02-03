@@ -1,0 +1,10 @@
+.background-img-detailpage {
+    height: 100%;
+    width: 100%;
+    /*position: relative;*/
+    z-index: -1;
+    opacity: 30%;
+    background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

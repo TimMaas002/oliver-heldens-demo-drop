@@ -1,0 +1,9 @@
+.background-img-feedback {
+    height: 100%;
+    width: 100%;
+    /*position: relative;*/
+    z-index: -1;
+    background-image: url("../../assets/images/Oliver-Heldens_credit_@alivecoverage-dark.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

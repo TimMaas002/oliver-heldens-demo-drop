@@ -1,0 +1,10 @@
+.background-img-profile {
+    height: 100%;
+    width: 100%;
+    /*position: relative;*/
+    z-index: -1;
+    opacity: 58%;
+    background-image: url("../../assets/images/Oliver-Heldens_credit_@alivecoverage-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
