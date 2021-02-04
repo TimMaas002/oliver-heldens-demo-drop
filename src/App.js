@@ -1,12 +1,11 @@
 import './App.css';
 import React from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
-    withRouter,
+    Redirect,
 } from 'react-router-dom';
-import NavBar from "./components/navBar/NavBar";
+// import NavBar from "./components/navBar/NavBar";
 import About from "./pages/about/About";
 import Dashboard from "./pages/dashboard/Dashboard";
 import DetailPage from "./pages/detailPage/DetailPage";
@@ -15,48 +14,41 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
+import { useAuthState } from "./context/AuthContext";
 
 function App() {
+    const { isAuthenticated } = useAuthState();
 
   return (
-      <Router>
+      <>
           {/*<NavBar />*/}
-
           <Switch>
               <Route exact path="/">
-                  <Home />
+                  {isAuthenticated ? <Home /> : <Redirect to="/signin" />}
               </Route>
-
               <Route path="/detailpage">
-                  <DetailPage />
+                  {isAuthenticated ? <DetailPage /> : <Redirect to="/signin" />}
               </Route>
-
               <Route path="/dashboard">
-                  <Dashboard />
+                  {isAuthenticated ? <Dashboard /> : <Redirect to="/signin" />}
               </Route>
-
               <Route path="/feedback">
-                  <Feedback />
+                  {isAuthenticated ? <Feedback /> : <Redirect to="/signin" />}
               </Route>
-
               <Route path="/profile">
-                  <Profile />
+                  {isAuthenticated ? <Profile /> : <Redirect to="/signin" />}
               </Route>
-
               <Route exact path="/signin">
                   <SignIn />
               </Route>
-
               <Route exact path="/signup">
                   <SignUp />
               </Route>
-
               <Route path="/about">
-                  <About />
+                  {isAuthenticated ? <About />: <Redirect to="/signin" />}
               </Route>
           </Switch>
-
-      </Router>
+      </>
   );
 }
 
