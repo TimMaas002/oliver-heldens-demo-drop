@@ -4,6 +4,7 @@ import './SignUp.css';
 import logo from "../../assets/logo/heldeep-logo-white.png";
 import { ReactComponent as BackArrow } from "../../assets/icons/044-left-arrow.svg"
 import axios from "axios";
+import InputField from "../../components/inputField/InputField";
 
 function SignUp() {
     const [email, setEmail] = useState('');
@@ -54,70 +55,60 @@ function SignUp() {
                     {createUserSuccess === true && <p>Het is gelukt met registreren! Log je nu in!</p>}
                     <Link to="/signin" ><BackArrow className="form-back-arrow"/></Link>
                     <form onSubmit={onSubmit} className="form-signUp">
-                        {/*<label htmlFor="first-name-field" className="label-signUp">*/}
+                        {/*<InputField*/}
+                        {/*    id="first-name-field"*/}
+                        {/*    type="text"*/}
+                        {/*    value={firstName}*/}
+                        {/*    onChange={(e) => setFirstName(e.target.value)}*/}
+                        {/*>*/}
                         {/*    First name*/}
-                        {/*    <input*/}
-                        {/*        type="first-name"*/}
-                        {/*        id="first-name-field"*/}
-                        {/*        className="input-signUp"*/}
-                        {/*        value={firstName}*/}
-                        {/*        onChange={(e) => setFirstName(e.target.value)}*/}
-                        {/*    />*/}
-                        {/*</label>*/}
+                        {/*</InputField>*/}
 
-                        {/*<label htmlFor="last-name-field" className="label-signUp">*/}
+                        {/*<InputField*/}
+                        {/*    id="last-name-field"*/}
+                        {/*    type="text"*/}
+                        {/*    value={lastName}*/}
+                        {/*    onChange={(e) => setLastName(e.target.value)}*/}
+                        {/*>*/}
                         {/*    Last name*/}
-                        {/*    <input*/}
-                        {/*        type="last-name"*/}
-                        {/*        id="last-name-field"*/}
-                        {/*        className="input-signUp"*/}
-                        {/*        value={lastName}*/}
-                        {/*        onChange={(e) => setLastName(e.target.value)}*/}
-                        {/*    />*/}
-                        {/*</label>*/}
+                        {/*</InputField>*/}
 
-                        <label htmlFor="username-field" className="label-signUp">
+                        <InputField
+                            id="username-field"
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        >
                             Username
-                            <input
-                                type="text"
-                                id="username-field"
-                                className="input-signUp"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </label>
+                        </InputField>
 
-                        <label htmlFor="email-field" className="label-signUp">
+                        <InputField
+                            id="email-field"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        >
                             Email
-                            <input
-                                type="email"
-                                id="email-field"
-                                className="input-signUp"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </label>
+                        </InputField>
 
-                        <label htmlFor="password-field" className="label-signUp">
+                        <InputField
+                            id="password-field"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        >
                             Password
-                            <input
-                                type="password"
-                                id="password-field"
-                                className="input-signUp"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </label>
+                        </InputField>
 
-                        {/*<label htmlFor="confirm-password-field" className="label-signUp">*/}
+                        {/*<InputField*/}
+                        {/*    id="confirm-password-field"*/}
+                        {/*    type="password"*/}
+                        {/*    value={confirmPassword}*/}
+                        {/*    onChange={(e) => setConfirmPassword(e.target.value)}*/}
+                        {/*>*/}
                         {/*    Confirm Password*/}
-                        {/*    <input*/}
-                        {/*        type="password"*/}
-                        {/*        id="confirm-password-field"*/}
-                        {/*        className="input-signUp"*/}
-                        {/*        value={confirmPassword}*/}
-                        {/*        onChange={(e) => setConfirmPassword(e.target.value)}/>*/}
-                        {/*</label>*/}
+                        {/*</InputField>*/}
+
                         <button
                             type="submit"
                             className="btn-purple"

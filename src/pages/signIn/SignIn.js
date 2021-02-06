@@ -1,9 +1,10 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './SignIn.css';
 import { AuthContext, useAuthState } from "../../context/AuthContext";
 import logo from "../../assets/logo/heldeep-logo-white.png";
 import axios from "axios";
+import InputField from "../../components/inputField/InputField";
 
 function SignIn() {
     const { login } = useContext(AuthContext);
@@ -53,47 +54,42 @@ function SignIn() {
                 <div className="form-container-signIn">
                     <h1>Demodrop</h1>
                     <form onSubmit={onSubmit} className="form-signIn">
-                        {/*<label htmlFor="email-field" className="label-signIn">*/}
+                        {/*<InputField*/}
+                        {/*    id="password-field"*/}
+                        {/*    type="email"*/}
+                        {/*    value={email}*/}
+                        {/*    onChange={(e) => setEmail(e.target.value)}*/}
+                        {/*>*/}
                         {/*    Email*/}
-                        {/*    <input*/}
-                        {/*        type="email"*/}
-                        {/*        id="email-field"*/}
-                        {/*        className="input-signIn"*/}
-                        {/*        value={email}*/}
-                        {/*        onChange={(e) => setEmail(e.target.value)}*/}
-                        {/*    />*/}
-                        {/*</label>*/}
+                        {/*</InputField>*/}
 
-                        <label htmlFor="username-field" className="label-signIn">
+                        <InputField
+                            id="username-field"
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        >
                             Username
-                            <input
-                                type="username"
-                                id="username-field"
-                                className="input-signIn"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </label>
+                        </InputField>
 
-                        <label htmlFor="password-field" className="label-signIn">
+                        <InputField
+                            id="password-field"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        >
                             Password
-                            <input
-                                type="password"
-                                id="password-field"
-                                className="input-signIn"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)} />
-                        </label>
+                        </InputField>
 
-                        {/*<label htmlFor="password-confirm-field" className="label-signIn">*/}
+                        {/*<InputField*/}
+                        {/*    id="password-field"*/}
+                        {/*    type="password"*/}
+                        {/*    value={confirmPassword}*/}
+                        {/*    onChange={(e) => setUsername(e.target.value)}*/}
+                        {/*>*/}
                         {/*    Confirm Password*/}
-                        {/*    <input*/}
-                        {/*        type="password"*/}
-                        {/*        id="password-confirm-field"*/}
-                        {/*        className="input-signIn"*/}
-                        {/*        value={confirmPassword}*/}
-                        {/*        onChange={(e) => setConfirmPassword(e.target.value)} />*/}
-                        {/*</label>*/}
+                        {/*</InputField>*/}
+
                         <button
                             type="submit"
                             className="btn-purple"

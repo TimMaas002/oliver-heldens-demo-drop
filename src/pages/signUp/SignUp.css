@@ -41,17 +41,6 @@
     top: 80px;
 }
 
-.label-signUp {
-    color: hsl(0, 0%, 13%);
-}
-
-.input-signUp {
-    border-radius: 6px;
-    border: 2px solid darkgrey;
-    width: 100%;
-    padding: 8px 15px;
-}
-
 .form-signUp {
     width: 100%;
     display: flex;

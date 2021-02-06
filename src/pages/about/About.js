@@ -1,13 +1,11 @@
 import React from 'react';
 import './About.css';
 import oliver_heldens from '../../assets/images/Oliver-Heldens-Maassilo-1.jpg';
-import NavBar from "../../components/navBar/NavBar"
 
 function About() {
 
     return (
         <>
-            <NavBar />
             <div className="about-container">
                 <div className="bio-container">
                     <h1>Oliver heldens</h1>

@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Home.css';
-import NavBar from "../../components/navBar/NavBar"
+import InputField from "../../components/inputField/InputField";
 
 function Home() {
     const [formName, setFormName] = useState('');
     const [formEmail, setFormEmail] = useState('');
     const [formArtistName, setFormArtistName] = useState('');
-    const [formFile, setFormFile] = useState();
+    const [formFile, setFormFile] = useState('');
 
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formName, formEmail, formArtistName, formFile);
+        console.log({formName, formEmail, formArtistName, formFile});
     }
 
     return (
         <>
-            <NavBar />
             <div className="background-img-home">
                 <header className="header-container">
                     <Link to="/" className="active-link">
@@ -31,42 +30,46 @@ function Home() {
                 <div className="form-container">
                     <form onSubmit={handleSubmit}>
                         <fieldset>
-                            <label htmlFor="details-name">Name</label>
-                            <input
-                                type="text"
-                                name="name"
+                            <InputField
                                 id="details-name"
+                                type="text"
                                 placeholder="Oliver"
                                 value={formName}
                                 onChange={(e) => setFormName(e.target.value)}
-                            />
-                            <label htmlFor="email-address">Email Address</label>
-                            <input
-                                type="email"
-                                name="email"
+                            >
+                                Name
+                            </InputField>
+
+                            <InputField
                                 id="email-address"
+                                type="email"
                                 placeholder="oliverheldens@gmail.com"
                                 value={formEmail}
                                 onChange={(e) => setFormEmail(e.target.value)}
-                            />
-                            <label htmlFor="artist-name">Artist name - song name</label>
-                            <input
-                                type="text"
-                                name="artist-name"
+                            >
+                                Email Address
+                            </InputField>
+
+                            <InputField
                                 id="artist-name"
+                                type="text"
                                 placeholder="Oliver Heldens - amazing song"
                                 value={formArtistName}
                                 onChange={(e) => setFormArtistName(e.target.value)}
-                            />
-                            <label htmlFor="music-upload">music</label>
-                            <input
-                                type="file"
-                                name="music-upload"
+                            >
+                                Artist name - song name
+                            </InputField>
+
+                            <InputField
                                 id="music-upload"
+                                type="file"
                                 placeholder="amazing-demo.mp3"
                                 value={formFile}
                                 onChange={(e) => setFormFile(e.target.value)}
-                            />
+                            >
+                                Music
+                            </InputField>
+
                             <label htmlFor="personal-message">personal message</label>
                             <textarea
                                 name="message"

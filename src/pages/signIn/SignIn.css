@@ -34,17 +34,6 @@
     padding: 5% 10%;
 }
 
-.label-signIn {
-    color: hsl(0, 0%, 13%);
-}
-
-.input-signIn {
-    border-radius: 6px;
-    border: 2px solid darkgrey;
-    width: 100%;
-    padding: 8px 15px;
-}
-
 .form-signIn {
     width: 100%;
     display: flex;

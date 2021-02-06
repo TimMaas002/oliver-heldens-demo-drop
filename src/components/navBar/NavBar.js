@@ -1,8 +1,8 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import './NavBar.css';
 import logo from '../../assets/logo/heldeep-logo-white.png';
-import {AuthContext, useAuthState} from "../../context/AuthContext";
+import { AuthContext, useAuthState } from "../../context/AuthContext";
 
 function NavBar() {
 

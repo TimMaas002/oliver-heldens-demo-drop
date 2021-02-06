@@ -5,7 +5,7 @@ import {
     Route,
     Redirect,
 } from 'react-router-dom';
-// import NavBar from "./components/navBar/NavBar";
+import NavBar from "./components/navBar/NavBar";
 import About from "./pages/about/About";
 import Dashboard from "./pages/dashboard/Dashboard";
 import DetailPage from "./pages/detailPage/DetailPage";
@@ -21,22 +21,22 @@ function App() {
 
   return (
       <>
-          {/*<NavBar />*/}
+          <NavBar />
           <Switch>
               <Route exact path="/">
-                  {isAuthenticated ? <Home /> : <Redirect to="/signin" />}
+                  <Home />
               </Route>
               <Route path="/detailpage">
-                  {isAuthenticated ? <DetailPage /> : <Redirect to="/signin" />}
+                  <DetailPage />
               </Route>
               <Route path="/dashboard">
-                  {isAuthenticated ? <Dashboard /> : <Redirect to="/signin" />}
+                  <Dashboard />
               </Route>
               <Route path="/feedback">
-                  {isAuthenticated ? <Feedback /> : <Redirect to="/signin" />}
+                  <Feedback />
               </Route>
               <Route path="/profile">
-                  {isAuthenticated ? <Profile /> : <Redirect to="/signin" />}
+                  <Profile />
               </Route>
               <Route exact path="/signin">
                   <SignIn />
@@ -45,7 +45,7 @@ function App() {
                   <SignUp />
               </Route>
               <Route path="/about">
-                  {isAuthenticated ? <About />: <Redirect to="/signin" />}
+                  <About />
               </Route>
           </Switch>
       </>

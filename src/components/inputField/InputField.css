@@ -1,0 +1,18 @@
+/*.input-item-label-white {*/
+/*    color: white;*/
+/*}*/
+
+/*.input-item-label-black {*/
+/*    color: hsl(0, 0%, 13%);*/
+/*}*/
+
+.input-field {
+    border-radius: 6px;
+    border: 2px solid darkgrey;
+    width: 100%;
+    padding: 8px 15px;
+}
+
+.input-item-container {
+    width: 100%;
+}
