@@ -5,6 +5,7 @@ import ListItem from "../../components/listItem/ListItem";
 
 function UploadList() {
 
+
     return(
         <>
             <div className="background-img__upload-list">
@@ -18,11 +19,26 @@ function UploadList() {
                 </header>
 
                 <div className="upload-list__container">
-                    <div className="upload-list__item">
-                        <ListItem
-
-                        />
-                    </div>
+                    <ListItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
+                    <ListItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
+                    <ListItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
+                    <ListItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
                 </div>
             </div>
         </>
