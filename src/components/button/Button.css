@@ -1,0 +1,59 @@
+.button {
+    align-self: center;
+    width: 50%;
+    margin-top: 4%;
+    padding: 10px;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-nav {
+    background-color: hsl(200, 95%, 14%);
+    border: 2px solid #fff;
+    width: 100%;
+    margin-left: 30px;
+}
+
+.button-nav:hover {
+    background-color: hsl(200, 95%, 24%);
+    transition: all 0.2s ease-out;
+}
+
+.button__purple {
+    background-color: hsl(200, 95%, 14%);
+    border: 2px solid hsl(200, 95%, 14%);
+}
+
+.button__purple:hover {
+    color: hsl(200, 95%, 14%);
+    border: 2px solid hsl(200, 95%, 14%);
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+}
+
+.button__orange {
+    background-color: hsl(32, 100%, 49%);
+    border: 2px solid hsl(32, 100%, 49%);
+}
+
+.button__orange:hover {
+    color: #fff;
+    border: 2px solid hsl(32, 100%, 49%);
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+}
+
+.button-form {
+    width: 100%;
+}
+
+@media all and (max-width: 960px)  {
+    .button-nav {
+        width: 70%;
+        margin-left: 0;
+    }
+
+}

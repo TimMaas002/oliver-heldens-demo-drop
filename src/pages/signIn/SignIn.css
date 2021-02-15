@@ -1,46 +1,46 @@
-.background-img-signIn {
-    height: 100%;
-    width: 100%;
-    /*position: relative;*/
-    z-index: -1;
-    background-image: url("../../assets/images/oliver_heldens_ultra-dark.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-bottom: 200px;
-}
+/*.background-img-signIn {*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    !*position: relative;*!*/
+/*    z-index: -1;*/
+/*    background-image: url("../../assets/images/oliver_heldens_ultra-dark.jpg");*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    padding-bottom: 200px;*/
+/*}*/
 
-.btn-purple {
-    width: 100%;
-    background-color: hsl(200, 95%, 14%);
-}
+/*.btn-purple {*/
+/*    width: 100%;*/
+/*    background-color: hsl(200, 95%, 14%);*/
+/*}*/
 
-.container-logo-signIn{
-    display: flex;
-    padding-top: 5%;
-    align-content: center;
-    justify-content: center;
-}
+/*.container-logo-signIn{*/
+/*    display: flex;*/
+/*    padding-top: 5%;*/
+/*    align-content: center;*/
+/*    justify-content: center;*/
+/*}*/
 
-.logo-signIn {
-    width: 300px;
-}
+/*.logo-signIn {*/
+/*    width: 300px;*/
+/*}*/
 
-.form-container-signIn {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    margin: 5% 25%;
-    align-items: center;
-    padding: 5% 10%;
-}
+/*.form-container-signIn {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    background-color: white;*/
+/*    margin: 5% 25%;*/
+/*    align-items: center;*/
+/*    padding: 5% 10%;*/
+/*}*/
 
-.form-signIn {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
+/*.form-signIn {*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-.p-sign-in {
-    color: hsl(0, 0%, 13%);
-    font-weight: 700;
-}
+/*.p-sign-in {*/
+/*    color: hsl(0, 0%, 13%);*/
+/*    font-weight: 700;*/
+/*}*/

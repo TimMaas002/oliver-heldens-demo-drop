@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Home.css';
 import InputField from "../../components/inputField/InputField";
+import Button from "../../components/button/Button";
 
 function Home() {
     const [formName, setFormName] = useState('');
@@ -17,19 +18,19 @@ function Home() {
 
     return (
         <>
-            <div className="background-img-home">
+            <div className="background-img__home">
                 <header className="header-container">
                     <Link to="/" className="active-link">
-                        <h2>Producer</h2>
+                        <h2 className="header__h2">Producer</h2>
                     </Link>
                     <Link to="/home-upload-list">
-                        <h2>Upload List</h2>
+                        <h2 className="header__h2">Upload List</h2>
                     </Link>
                 </header>
 
                 <div className="form-container">
                     <form onSubmit={handleSubmit}>
-                        <fieldset>
+                        <fieldset className="form__outline">
                             <InputField
                                 id="details-name"
                                 type="text"
@@ -78,7 +79,10 @@ function Home() {
                                 rows="5"
                                 placeholder="This music was inspired by..."
                             />
-                            <button type="submit">Submit Demo</button>
+                            <Button
+                                className="button button__orange button-form"
+                                type="submit"
+                            >Submit Demo</Button>
                         </fieldset>
                     </form>
                 </div>

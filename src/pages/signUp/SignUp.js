@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SignUp.css';
 import logo from "../../assets/logo/heldeep-logo-white.png";
-import { ReactComponent as BackArrow } from "../../assets/icons/044-left-arrow.svg"
 import axios from "axios";
 import InputField from "../../components/inputField/InputField";
 
@@ -53,7 +52,7 @@ function SignUp() {
                 <div className="form-container-signUp">
                     <h1>Register</h1>
                     {createUserSuccess === true && <p>Het is gelukt met registreren! Log je nu in!</p>}
-                    <Link to="/signin" ><BackArrow className="form-back-arrow"/></Link>
+                    {/*<Link to="/signin" ><BackArrow className="form-back-arrow"/></Link>*/}
                     <form onSubmit={onSubmit} className="form-signUp">
                         {/*<InputField*/}
                         {/*    id="first-name-field"*/}

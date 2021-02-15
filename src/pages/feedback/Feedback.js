@@ -5,7 +5,7 @@ function Feedback() {
 
     return(
         <>
-            <div className="background-img-feedback">
+            <div className="background-img__feedback">
             </div>
         </>
     );

@@ -1,74 +1,72 @@
-h2 {
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-.background-img-home {
-    width: 100%;
-    height: 100%;
-    /*position: relative;*/
+.background-img__home {
     z-index: -1;
     background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-dark.jpg");
-    background-size: cover;
     background-repeat: no-repeat;
-    padding-bottom: 200px;
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    height: 100%;
 }
 
 .header-container {
-    color: white;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    padding: 40px 15% 20px 15%;
+    padding: 40px 10% 20px 10%;
 }
 
-fieldset {
+.header-container a {
+    text-decoration: none;
+}
+
+.header__h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+}
+
+.form-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border: 4px solid white;
-    margin: 3% 25% 5%;
-    padding: 2% 5%;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 10%;
+    margin: 0 15%;
 }
 
-label {
-    display: block;
-    margin: 10px 0 5px;
-    /*color: white;*/
+.form-container form {
+    width: 100%;
+}
+
+.form-container label {
+    color: #fff;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
+    padding: 2% 2% 0;
 }
 
-input {
-    border: 2px solid white;
-    width: 100%;
+.form-container textarea {
+    width: 96%;
+    margin: 0 -2% 0 2%;
     border-radius: 6px;
     padding: 8px 15px;
+    resize: none;
 }
 
-input[type=file] {
-    color: white;
-}
-
-textarea {
-    border: 2px solid white;
-    width: 100%;
-    border-radius: 6px;
-    padding: 8px 15px;
-}
-
-button {
-    align-self: center;
-    width: 50%;;
-    margin-top: 4%;
-    padding: 10px;
-    border: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: white;
-    background-color: hsl(32, 100%, 49%);
+.form__outline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 4px solid #fff;
+    padding: 2% 10% 6%;
 }
 
 .active-link {
     border-bottom: 3px solid white;
+}
+
+@media all and (max-width: 960px) {
+    .form-container textarea {
+        margin-bottom: 8%;
+    }
 }

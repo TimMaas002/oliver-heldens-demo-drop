@@ -62,7 +62,6 @@ function useAuthState() {
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
 
-
     return {
         ...authState,
         isAuthenticated: isAuthenticated,
