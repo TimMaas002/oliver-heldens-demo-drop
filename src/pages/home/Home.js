@@ -9,11 +9,11 @@ function Home() {
     const [formEmail, setFormEmail] = useState('');
     const [formArtistName, setFormArtistName] = useState('');
     const [formFile, setFormFile] = useState('');
-
+    const [formMessage, setFormMessage] = useState('');
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log({formName, formEmail, formArtistName, formFile});
+        console.log({formName, formEmail, formArtistName, formFile, formMessage});
     }
 
     return (
@@ -33,6 +33,7 @@ function Home() {
                         <fieldset className="form__outline">
                             <InputField
                                 id="details-name"
+                                className={"input-field input-field--white "}
                                 type="text"
                                 placeholder="Oliver"
                                 value={formName}
@@ -43,6 +44,7 @@ function Home() {
 
                             <InputField
                                 id="email-address"
+                                className={"input-field input-field--white"}
                                 type="email"
                                 placeholder="oliverheldens@gmail.com"
                                 value={formEmail}
@@ -53,6 +55,7 @@ function Home() {
 
                             <InputField
                                 id="artist-name"
+                                className={"input-field input-field--white"}
                                 type="text"
                                 placeholder="Oliver Heldens - amazing song"
                                 value={formArtistName}
@@ -63,6 +66,7 @@ function Home() {
 
                             <InputField
                                 id="music-upload"
+                                className={"input-field input-field--white"}
                                 type="file"
                                 placeholder="amazing-demo.mp3"
                                 value={formFile}
@@ -78,6 +82,8 @@ function Home() {
                                 cols="30"
                                 rows="5"
                                 placeholder="This music was inspired by..."
+                                value={formMessage}
+                                onChange={(e) => setFormMessage(e.target.value)}
                             />
                             <Button
                                 className="button button__orange button-form"

@@ -5,6 +5,7 @@ import { AuthContext, useAuthState } from "../../context/AuthContext";
 import logo from "../../assets/logo/heldeep-logo-white.png";
 import axios from "axios";
 import InputField from "../../components/inputField/InputField";
+import Button from "../../components/button/Button";
 
 function SignIn() {
     const { login } = useContext(AuthContext);
@@ -47,11 +48,11 @@ function SignIn() {
 
     return (
         <>
-            <div className="background-img-signIn">
-                <div className="container-logo-signIn">
+            <div className="background-img__signIn">
+                <div className="container-logo__signIn">
                     <img className="logo-signIn" src={logo} alt="logo"/>
                 </div>
-                <div className="form-container-signIn">
+                <div className="form-container__signIn">
                     <h1>Demodrop</h1>
                     <form onSubmit={onSubmit} className="form-signIn">
                         {/*<InputField*/}
@@ -65,6 +66,7 @@ function SignIn() {
 
                         <InputField
                             id="username-field"
+                            className={"input-field input-field--black"}
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -74,6 +76,7 @@ function SignIn() {
 
                         <InputField
                             id="password-field"
+                            className={"input-field input-field--black"}
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -90,16 +93,16 @@ function SignIn() {
                         {/*    Confirm Password*/}
                         {/*</InputField>*/}
 
-                        <button
+                        <Button
                             type="submit"
-                            className="btn-purple"
+                            className={"button button-form button__purple"}
                             disabled={loading}
                         >
                             {loading ? 'Loading...' : 'Sign In'}
-                        </button>
+                        </Button>
                         {error && <p>{error}</p>}
                     </form>
-                    <p>Dont have an account? <Link to="/signup" className="p-sign-in" >Create new account</Link></p>
+                    <p>Dont have an account? <Link to="/signup">Create new account</Link></p>
                 </div>
             </div>
         </>

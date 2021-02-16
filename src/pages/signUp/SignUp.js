@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './SignUp.css';
 import logo from "../../assets/logo/heldeep-logo-white.png";
 import axios from "axios";
 import InputField from "../../components/inputField/InputField";
+import Button from "../../components/button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function SignUp() {
     const [email, setEmail] = useState('');
@@ -16,6 +19,8 @@ function SignUp() {
     const [createUserSuccess, setCreateUserSuccess] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState('');
+
+    const history = useHistory();
 
     async function onSubmit(e) {
         toggleLoading(true);
@@ -45,11 +50,14 @@ function SignUp() {
 
     return (
         <>
-            <div className="background-img-signUp">
-                <div className="container-logo-signUp">
+            <div className="background-img__signUp">
+                <div className="container-logo__signUp">
                     <img className="logo-signUp" src={logo} alt="logo"/>
                 </div>
-                <div className="form-container-signUp">
+                <div className="form-container__signUp">
+                    <div className="signUp__arrow">
+                        <FontAwesomeIcon icon={faArrowLeft} onClick={() => {history.push('/signin')}}/>
+                    </div>
                     <h1>Register</h1>
                     {createUserSuccess === true && <p>Het is gelukt met registreren! Log je nu in!</p>}
                     {/*<Link to="/signin" ><BackArrow className="form-back-arrow"/></Link>*/}
@@ -74,6 +82,7 @@ function SignUp() {
 
                         <InputField
                             id="username-field"
+                            className={"input-field input-field--black"}
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -83,6 +92,7 @@ function SignUp() {
 
                         <InputField
                             id="email-field"
+                            className={"input-field input-field--black"}
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -92,6 +102,7 @@ function SignUp() {
 
                         <InputField
                             id="password-field"
+                            className={"input-field input-field--black"}
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -108,13 +119,13 @@ function SignUp() {
                         {/*    Confirm Password*/}
                         {/*</InputField>*/}
 
-                        <button
+                        <Button
                             type="submit"
-                            className="btn-purple"
+                            className={"button button-form button__purple"}
                             disabled={loading}
                         >
                             {loading ? 'Loading...' : 'Sign Up'}
-                        </button>
+                        </Button>
                         {error && <p>{error}</p>}
                     </form>
                 </div>

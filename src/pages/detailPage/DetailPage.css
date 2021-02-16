@@ -1,10 +1,86 @@
-.background-img-detailpage {
-    height: 100%;
-    width: 100%;
-    /*position: relative;*/
+.background-img__detailpage {
     z-index: -1;
-    opacity: 30%;
-    background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-1.jpg");
-    background-size: cover;
+    width: auto;
+    height: 100%;
+    background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-licht.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.detailpage-header {
+    width: auto;
+    height: 50px;
+}
+
+.detailpage-footer {
+    width: auto;
+    height: 50px;
+}
+
+.detailpage-container {
+    /*height: 100%;*/
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20%;
+    padding: 5% 100px;
+    box-shadow: 0 0 15px -5px hsl(0, 0%, 14%);
+}
+
+.detailpage-container__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailpage-container__title {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.detailpage-container__subTitle {
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.detailpage-container__info {
+    line-height: 22px;
+    font-size: 12px;
+    padding: 10px 10%;
+    min-width: 230px;
+}
+
+.detailpage-container__buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.detailpage__arrow {
+    align-self: flex-start;
+    cursor: pointer;
+    font-size: 30px;
+    color: hsl(0, 0%, 14%);
+}
+
+.detailpage__icon {
+    font-size: 20px;
+}
+
+@media all and (max-width: 1200px) {
+    .detailpage-container__buttons {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media all and (max-width: 960px) {
+
 }

@@ -1,30 +1,37 @@
-/*.background-img-dashboard {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    !*position: relative;*!*/
-/*    z-index: -1;*/
-/*    background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-dark.jpg");*/
-/*    background-size: cover;*/
-/*    background-repeat: no-repeat;*/
-/*    padding-bottom: 100px;*/
-/*}*/
+.background-img__dashboard {
+    z-index: -1;
+    background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-dark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    height: 100%;
+}
 
-/*.header-container {*/
-/*    color: white;*/
-/*    display: flex;*/
-/*    justify-content: space-around;*/
-/*    padding: 40px 15% 20px 15%;*/
-/*}*/
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 40px 10% 20px 10%;
+}
 
-/*.active-link {*/
-/*    border-bottom: 3px solid white;*/
-/*}*/
+.header-container a {
+    text-decoration: none;
+}
 
-/*h2 {*/
-/*    text-transform: uppercase;*/
-/*    font-weight: 700;*/
-/*}*/
+.header__h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+}
 
-/*h4 {*/
-/*    text-transform: uppercase;*/
-/*}*/
+.dashboard-list__container {
+    height: 100%;
+    border: 4px solid #fff;
+    padding: 2% 2%;
+    margin: 0 25%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}

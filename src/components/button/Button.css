@@ -50,10 +50,120 @@
     width: 100%;
 }
 
+.button-dashboard {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.button-dashboard__purple {
+    background-color: hsl(200, 95%, 14%);
+    border: 2px solid hsl(200, 95%, 14%);
+}
+
+.button-dashboard__purple:hover {
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+}
+
+.button-dashboard__orange {
+    background-color: hsl(32, 100%, 49%);
+    border: 2px solid hsl(32, 100%, 49%);
+}
+
+.button-dashboard__orange:hover {
+    color: #fff;
+    border: 2px solid hsl(32, 100%, 49%);
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+}
+
+.button-detailpage {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.button-detailpage__purple {
+    background-color: hsl(200, 95%, 14%);
+    border: 2px solid hsl(200, 95%, 14%);
+}
+
+.button-detailpage__purple:hover {
+    color: hsl(200, 95%, 14%);
+    border: 2px solid hsl(200, 95%, 14%);
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+}
+
+.button-detailpage__orange {
+    background-color: hsl(32, 100%, 49%);
+    border: 2px solid hsl(32, 100%, 49%);
+}
+
+.button-detailpage__orange:hover {
+    color: hsl(32, 100%, 49%);
+    border: 2px solid hsl(32, 100%, 49%);
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+}
+
+@media all and (max-width: 1200px) {
+    .button-detailpage {
+        width: 500px;
+        justify-content: space-evenly;
+    }
+}
+
+@media all and (max-width: 1120px) {
+    .button-dashboard {
+        width: 150px;
+    }
+}
+
 @media all and (max-width: 960px)  {
     .button-nav {
         width: 70%;
         margin-left: 0;
     }
 
+    .button-dashboard {
+        width: 300px;
+    }
+
+    .button-detailpage {
+        width: 400px;
+    }
+}
+
+@media all and (max-width: 780px) {
+    .button-dashboard {
+        width: 200px;
+    }
+
+    .button-detailpage {
+        width: 350px;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .button-detailpage {
+        width: 250px;
+    }
+}
+
+@media all and (max-width: 460px) {
+    .button-detailpage {
+        width: 200px;
+    }
 }

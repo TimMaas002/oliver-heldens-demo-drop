@@ -1,17 +1,16 @@
 import React from 'react';
 import './InputField.css';
 
-function InputField({ children, type, id, value, onChange, placeholder }) {
+function InputField({ children, type, id, value, onChange, placeholder, className }) {
 
     return (
         <>
-            <div className="input-item-container">
+            <div className="input-item__container">
                 <label htmlFor={id}
-                       className="input-item-label-white"
                 >
                     {children}
                     <input
-                        className="input-field"
+                        className={className}
                         type={type}
                         id={id}
                         value={value}

@@ -18,12 +18,13 @@
     transform: scale(1.1);
 }
 
-.list-item__title {
+.list-item__title h4 {
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.list-item__subTitle {
+.list-item__subTitle h5 {
+    font-weight: 300;
     font-size: 14px;
     padding: 5px;
 }

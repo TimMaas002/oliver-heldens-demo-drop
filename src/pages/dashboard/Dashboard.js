@@ -7,17 +7,34 @@ function Dashboard() {
 
     return(
         <>
-            <div className="background-img-dashboard">
+            <div className="background-img__dashboard">
                 <header className="header-container">
                     <Link to="/dashboard">
-                        <h2>Dashboard</h2>
+                        <h2 className="header__h2">Dashboard</h2>
                     </Link>
                 </header>
 
-                <div className="dashboard-container">
-                    <fieldset>
-                        <DashboardItem />
-                    </fieldset>
+                <div className="dashboard-list__container">
+                    <DashboardItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
+                    <DashboardItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
+                    <DashboardItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
+                    <DashboardItem
+                        title="Name Artist"
+                        subTitle="Song Name"
+                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
+                    />
                 </div>
             </div>
         </>

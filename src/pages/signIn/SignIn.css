@@ -1,46 +1,73 @@
-/*.background-img-signIn {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    !*position: relative;*!*/
-/*    z-index: -1;*/
-/*    background-image: url("../../assets/images/oliver_heldens_ultra-dark.jpg");*/
-/*    background-size: cover;*/
-/*    background-repeat: no-repeat;*/
-/*    padding-bottom: 200px;*/
-/*}*/
+.background-img__signIn {
+    z-index: -1;
+    background-image: url("../../assets/images/oliver_heldens_ultra-dark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    height: 100vh;
+}
 
-/*.btn-purple {*/
-/*    width: 100%;*/
-/*    background-color: hsl(200, 95%, 14%);*/
-/*}*/
+.container-logo__signIn {
+    display: flex;
+    padding-top: 5%;
+    align-content: center;
+    justify-content: center;
+}
 
-/*.container-logo-signIn{*/
-/*    display: flex;*/
-/*    padding-top: 5%;*/
-/*    align-content: center;*/
-/*    justify-content: center;*/
-/*}*/
+.logo-signIn {
+    width: 300px;
+}
 
-/*.logo-signIn {*/
-/*    width: 300px;*/
-/*}*/
+.form-container__signIn {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 5% 25%;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 10%;
+    height: 65%;
+}
 
-/*.form-container-signIn {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    background-color: white;*/
-/*    margin: 5% 25%;*/
-/*    align-items: center;*/
-/*    padding: 5% 10%;*/
-/*}*/
+.form-container__signIn h1 {
+    padding: 20px 0;
+}
 
-/*.form-signIn {*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
+.form-container__signIn label {
+    color: hsl(0, 0%, 13%);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 2% 2% 0;
+}
 
-/*.p-sign-in {*/
-/*    color: hsl(0, 0%, 13%);*/
-/*    font-weight: 700;*/
-/*}*/
+.form-signIn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container__signIn p {
+    color: hsl(0, 0%, 33%);
+    font-weight: 400;
+    font-size: 12px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.form-container__signIn a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+@media all and (max-width: 960px) {
+    .form-container__signIn {
+        margin: 5% 20%;
+    }
+
+    .form-container__signIn p {
+        font-size: 14px;
+    }
+}
