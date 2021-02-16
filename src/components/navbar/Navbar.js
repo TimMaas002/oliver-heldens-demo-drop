@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState}  from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import './Navbar.css';
 import Logo from '../../assets/logo/heldeep-logo-white.png';
@@ -28,9 +28,9 @@ function Navbar() {
                     <li className="nav-item">
                         <NavLink to="/about" className="nav-link" activeClassName="nav-link--active">About</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink to="/profile" className="nav-link" activeClassName="nav-link--active">Profile</NavLink>
-                    </li>
+                    {/*<li className="nav-item">*/}
+                    {/*    <NavLink to="/profile" className="nav-link" activeClassName="nav-link--active">Profile</NavLink>*/}
+                    {/*</li>*/}
                     <Button className={'button button-nav nav-item'} type="button" onClick={() => {history.push('/signin')}}>
                         Sign in
                     </Button>

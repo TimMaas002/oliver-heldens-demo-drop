@@ -26,7 +26,22 @@ function Feedback() {
                 </div>
                 <div className="feedback-container">
                     <div className="feedback-container__buttons">
-                        <Button>i like this!</Button>
+                        <Button
+                            type="button"
+                            className="button-feedback"
+                        >i like this!..</Button>
+                        <Button
+                            type="button"
+                            className="button-feedback"
+                        >i would change...</Button>
+                        <Button
+                            type="button"
+                            className="button-feedback"
+                        >i want to use this...</Button>
+                        <Button
+                            type="button"
+                            className="button-feedback"
+                        >for the future...</Button>
                     </div>
                     <div className="feedback-container__form">
                         <form>

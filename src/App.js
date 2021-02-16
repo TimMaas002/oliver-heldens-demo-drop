@@ -12,7 +12,7 @@ import DetailPage from "./pages/detailPage/DetailPage";
 import Feedback from "./pages/feedback/Feedback";
 import Home from "./pages/home/Home";
 import UploadList from "./pages/uploadList/UploadList";
-import Profile from "./pages/profile/Profile";
+// import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import { useAuthState } from "./context/AuthContext";
@@ -39,9 +39,9 @@ function App() {
               <Route path="/feedback">
                   <Feedback />
               </Route>
-              <Route path="/profile">
-                  <Profile />
-              </Route>
+              {/*<Route path="/profile">*/}
+              {/*    <Profile />*/}
+              {/*</Route>*/}
               <Route exact path="/signin">
                   <SignIn />
               </Route>
