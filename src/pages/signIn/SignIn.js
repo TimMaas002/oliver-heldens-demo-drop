@@ -23,21 +23,25 @@ function SignIn() {
 
     useEffect(() => {
         if (isAuthenticated === true) {
+            // je wordt gepusht na het inloggen naar de home pagina
             history.push('/');
         }
     }, [isAuthenticated])
 
-    async function onSubmit(e) {
+    async function onFormSubmit(e) {
         toggleLoading(true);
         setError('');
         e.preventDefault();
 
         try {
             const response = await axios.post('http://localhost:8080/api/auth/signin', {
+                //de tweede komt uit het formulier, de eerste is de naam wat moet worden meegegeven naar de database
                 username: username,
                 password: password,
             })
-
+            // we roepen hier de context-functie login aan. de context gaat dan met de data die
+            // we hebben teruggekregen alles op de juiste plek zetten
+            // handel het inloggen aan de voorkant af met de data die we binnen hebben gekregen
             login(response.data);
         } catch(e) {
             console.error(e);
@@ -54,7 +58,7 @@ function SignIn() {
                 </div>
                 <div className="form-container__signIn">
                     <h1>Demodrop</h1>
-                    <form onSubmit={onSubmit} className="form-signIn">
+                    <form onSubmit={onFormSubmit} className="form-signIn">
                         {/*<InputField*/}
                         {/*    id="password-field"*/}
                         {/*    type="email"*/}

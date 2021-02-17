@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState}  from 'react';
+import React, { useContext, useEffect, useState }  from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import './Navbar.css';
 import Logo from '../../assets/logo/heldeep-logo-white.png';
@@ -8,9 +8,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
+
     const history = useHistory();
 
     const [openMenu, toggleOpenMenu] = useState(false);
+
+    const { logout } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthState();
+
+    // useEffect(() => {
+    //     if (isAuthenticated === false) {
+    //         history.push('/signin');
+    //     }
+    // },[isAuthenticated])
 
     return (
         <>
@@ -31,9 +41,15 @@ function Navbar() {
                     {/*<li className="nav-item">*/}
                     {/*    <NavLink to="/profile" className="nav-link" activeClassName="nav-link--active">Profile</NavLink>*/}
                     {/*</li>*/}
-                    <Button className={'button button-nav nav-item'} type="button" onClick={() => {history.push('/signin')}}>
-                        Sign in
-                    </Button>
+                    {isAuthenticated ? (
+                        <Button className={'button button-nav nav-item'} type="button" onClick={() => logout()}>
+                            Logout
+                        </Button>
+                    ) : (
+                        <Button className={'button button-nav nav-item'} type="button" onClick={() => {history.push('/signin')}}>
+                            Sign in
+                        </Button>
+                    )}
                 </ul>
                 <div className="menu-icon">
                     <FontAwesomeIcon icon={faBars} onClick={() => toggleOpenMenu(!openMenu)}/>

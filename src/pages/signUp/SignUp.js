@@ -60,7 +60,6 @@ function SignUp() {
                     </div>
                     <h1>Register</h1>
                     {createUserSuccess === true && <p>Het is gelukt met registreren! Log je nu in!</p>}
-                    {/*<Link to="/signin" ><BackArrow className="form-back-arrow"/></Link>*/}
                     <form onSubmit={onSubmit} className="form-signUp">
                         {/*<InputField*/}
                         {/*    id="first-name-field"*/}

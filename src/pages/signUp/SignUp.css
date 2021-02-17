@@ -27,7 +27,7 @@
     justify-content: center;
     align-items: center;
     padding: 5% 10%;
-    height: 65%;
+    height: 75%;
 }
 
 .form-container__signUp h1 {
@@ -53,7 +53,7 @@
     color: hsl(0, 0%, 33%);
     font-weight: 400;
     font-size: 12px;
-    margin: 20px 0;
+    margin: 10px 0;
     text-align: center;
 }
 

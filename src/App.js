@@ -5,6 +5,7 @@ import {
     Route,
     Redirect,
 } from 'react-router-dom';
+import PrivateRoute from "./routing/PrivateRoute";
 import Navbar from "./components/navbar/Navbar";
 import About from "./pages/about/About";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -18,7 +19,7 @@ import SignUp from "./pages/signUp/SignUp";
 import { useAuthState } from "./context/AuthContext";
 
 function App() {
-    const { isAuthenticated } = useAuthState();
+    // const { isAuthenticated } = useAuthState();
 
   return (
       <>
