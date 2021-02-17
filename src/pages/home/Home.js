@@ -5,15 +5,15 @@ import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 
 function Home() {
-    const [formName, setFormName] = useState('');
-    const [formEmail, setFormEmail] = useState('');
-    const [formArtistName, setFormArtistName] = useState('');
-    const [formFile, setFormFile] = useState('');
-    const [formMessage, setFormMessage] = useState('');
+    const [uploadFormArtistName, setUploadFormArtistName] = useState('');
+    const [uploadFormEmail, setUploadFormEmail] = useState('');
+    const [uploadFormSongName, setUploadFormSongName] = useState('');
+    const [uploadFormFile, setUploadFormFile] = useState('');
+    const [uploadFormMessage, setUploadFormMessage] = useState('');
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log({formName, formEmail, formArtistName, formFile, formMessage});
+        console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
     }
 
     return (
@@ -35,11 +35,11 @@ function Home() {
                                 id="details-name"
                                 className={"input-field input-field--white "}
                                 type="text"
-                                placeholder="Oliver"
-                                value={formName}
-                                onChange={(e) => setFormName(e.target.value)}
+                                placeholder="Oliver heldens"
+                                value={uploadFormArtistName}
+                                onChange={(e) => setUploadFormArtistName(e.target.value)}
                             >
-                                Name
+                                Artist Name
                             </InputField>
 
                             <InputField
@@ -47,8 +47,8 @@ function Home() {
                                 className={"input-field input-field--white"}
                                 type="email"
                                 placeholder="oliverheldens@gmail.com"
-                                value={formEmail}
-                                onChange={(e) => setFormEmail(e.target.value)}
+                                value={uploadFormEmail}
+                                onChange={(e) => setUploadFormEmail(e.target.value)}
                             >
                                 Email Address
                             </InputField>
@@ -57,11 +57,11 @@ function Home() {
                                 id="artist-name"
                                 className={"input-field input-field--white"}
                                 type="text"
-                                placeholder="Oliver Heldens - amazing song"
-                                value={formArtistName}
-                                onChange={(e) => setFormArtistName(e.target.value)}
+                                placeholder="Amazing song"
+                                value={uploadFormSongName}
+                                onChange={(e) => setUploadFormSongName(e.target.value)}
                             >
-                                Artist name - song name
+                                Song name
                             </InputField>
 
                             <InputField
@@ -69,8 +69,8 @@ function Home() {
                                 className={"input-field input-field--white"}
                                 type="file"
                                 placeholder="amazing-demo.mp3"
-                                value={formFile}
-                                onChange={(e) => setFormFile(e.target.value)}
+                                value={uploadFormFile}
+                                onChange={(e) => setUploadFormFile(e.target.value)}
                             >
                                 Music
                             </InputField>
@@ -82,8 +82,8 @@ function Home() {
                                 cols="30"
                                 rows="5"
                                 placeholder="This music was inspired by..."
-                                value={formMessage}
-                                onChange={(e) => setFormMessage(e.target.value)}
+                                value={uploadFormMessage}
+                                onChange={(e) => setUploadFormMessage(e.target.value)}
                             />
                             <Button
                                 className="button button__orange button-form"

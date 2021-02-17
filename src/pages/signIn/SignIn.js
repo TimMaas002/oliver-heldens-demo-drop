@@ -28,7 +28,7 @@ function SignIn() {
         }
     }, [isAuthenticated])
 
-    async function onFormSubmit(e) {
+    async function onSubmit(e) {
         toggleLoading(true);
         setError('');
         e.preventDefault();
@@ -58,7 +58,7 @@ function SignIn() {
                 </div>
                 <div className="form-container__signIn">
                     <h1>Demodrop</h1>
-                    <form onSubmit={onFormSubmit} className="form-signIn">
+                    <form onSubmit={onSubmit} className="form-signIn">
                         {/*<InputField*/}
                         {/*    id="password-field"*/}
                         {/*    type="email"*/}
