@@ -19,7 +19,7 @@ function DashboardItem({ title, subTitle, body }) {
                 </div>
                 <div className="dashboard-item__redirect">
                     <button type="button">
-                        <a href="/detailpage">Read more</a>
+                        <a href="/admin-detailpage">Read more</a>
                     </button>
                 </div>
                 <Button

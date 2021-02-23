@@ -15,13 +15,6 @@ function Home() {
 
     const [error, setError] = useState('');
 
-    //artist_name: uploadFormArtistName,
-    //email: uploadFormEmail,
-    //song_name: uploadFormSongName,
-    //upload_file: uploadFormFile,
-    //message: uploadFormMessage,
-
-    //  e.preventDefault();
     //  console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
 
     async function handleSubmit(e) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.css';
 
-function Button({ children, type, className, onClick}) {
+function Button({ children, type, className, onClick, id }) {
 
     return (
         <div>
@@ -9,6 +9,7 @@ function Button({ children, type, className, onClick}) {
                 className={className}
                 type={type}
                 onClick={onClick}
+                id={id}
             >
                 {children}
             </button>

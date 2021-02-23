@@ -5,20 +5,45 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/button/Button";
 import InputField from "../../components/inputField/InputField";
+import axios from 'axios';
 
 function Feedback() {
+    const [message, setMessage] = useState([]);
 
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [feedbackArtistName, setFeedbackArtistName] = useState('');
 
     const history = useHistory();
 
-    return(
+    async function getFeedback() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:8080/api/feedbacktexts/', {
+                header: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            // console.log(response.data);
+            setMessage(response.data);
+            setFeedbackMessage(message[0].message)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault(e)
+    }
+
+    return (
         <>
             <div className="background-img__feedback">
                 <div className="feedback-header">
                     <div className="feedback-header__arrow">
-                        <FontAwesomeIcon icon={faArrowLeft} onClick={() => {history.goBack()}}/>
+                        <FontAwesomeIcon icon={faArrowLeft} onClick={() => {
+                            history.goBack()
+                        }}/>
                     </div>
                     <h2 className="feedback-header__h2">
                         Feedback
@@ -29,7 +54,8 @@ function Feedback() {
                         <Button
                             type="button"
                             className="button-feedback"
-                        >i like this!..</Button>
+                            onClick={getFeedback}
+                        >i like this!...</Button>
                         <Button
                             type="button"
                             className="button-feedback"
@@ -44,7 +70,7 @@ function Feedback() {
                         >for the future...</Button>
                     </div>
                     <div className="feedback-container__form">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <InputField
                                 id="feedback-artist-name"
                                 className={"input-field input-field--white"}
@@ -76,5 +102,6 @@ function Feedback() {
         </>
     );
 }
+
 
 export default Feedback;

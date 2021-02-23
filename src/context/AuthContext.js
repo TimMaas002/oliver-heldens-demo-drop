@@ -31,9 +31,9 @@ function AuthContextProvider({ children }) {
                 setAuthState({
                     ...authState,
                     user: {
-                        id: response.data.id,
-                        username: response.data.username,
-                        email: response.data.email,
+                        id: response.id,
+                        username: response.username,
+                        email: response.email,
                     },
                     status: 'done',
                 });
@@ -95,6 +95,7 @@ function AuthContextProvider({ children }) {
             ...authState,
             user: null,
         })
+
         setAdmin(false);
         history.push('/signin');
     }
