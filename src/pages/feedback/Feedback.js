@@ -8,6 +8,7 @@ import InputField from "../../components/inputField/InputField";
 import axios from 'axios';
 
 function Feedback() {
+
     const [message, setMessage] = useState([]);
 
     const [feedbackMessage, setFeedbackMessage] = useState('');
@@ -15,10 +16,11 @@ function Feedback() {
 
     const history = useHistory();
 
+
     async function getFeedback() {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:8080/api/feedbacktexts/', {
+            const response = await axios.get(`http://localhost:8080/api/feedbacktexts/`, {
                 header: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,

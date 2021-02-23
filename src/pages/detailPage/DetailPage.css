@@ -1,7 +1,7 @@
 .background-img__detailpage {
     z-index: -1;
     width: auto;
-    height: 100%;
+    height: 100vh;
     background-image: url("../../assets/images/Oliver-Heldens-Tomorrowland-licht.jpg");
     background-repeat: no-repeat;
     background-size: cover;

@@ -100,7 +100,7 @@ function AuthContextProvider({ children }) {
         history.push('/signin');
     }
 
-    function loginAdmin() {
+    function getAdmin() {
         return admin;
     }
 
@@ -108,7 +108,7 @@ function AuthContextProvider({ children }) {
         ...authState,
         login: login,
         logout: logout,
-        loginAdmin: loginAdmin,
+        getAdmin: getAdmin,
     }
 
     return (

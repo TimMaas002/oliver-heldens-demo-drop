@@ -46,6 +46,7 @@ function UploadList() {
                             title={upload.artist_name}
                             subTitle={upload.song_name}
                             body={upload.message}
+                            link={`/uploadforms/${upload.id}`}
                         />
                     })}
                 </div>

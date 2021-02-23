@@ -3,13 +3,12 @@ import { AuthContext, useAuthState } from "../context/AuthContext";
 import { Redirect, Route } from "react-router-dom";
 
 function AdminPrivateRoute({ children, ...rest }) {
-    const { isAuthenticated } = useAuthState();
-    const { loginAdmin } = useContext(AuthContext)
+    const { isAuthenticated, isAdmin } = useAuthState();
+    // const { isAdmin } = useContext(AuthContext)
 
     return (
         <Route {...rest} render={() => {
-            // add && loginAdmin() after isAuthenticated for admin controle
-            return isAuthenticated && loginAdmin ? children : <Redirect to="/signin" />
+            return isAdmin ? children : <Redirect to="/signin" />
         }}/>
     );
 }

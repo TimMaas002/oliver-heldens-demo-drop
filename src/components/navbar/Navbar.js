@@ -16,12 +16,6 @@ function Navbar() {
     const { logout } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
 
-    // useEffect(() => {
-    //     if (isAuthenticated === false) {
-    //         history.push('/signin');
-    //     }
-    // },[isAuthenticated])
-
     return (
         <>
             <nav className="nav-container">
@@ -38,9 +32,6 @@ function Navbar() {
                     <li className="nav-item">
                         <NavLink to="/about" className="nav-link" activeClassName="nav-link--active">About</NavLink>
                     </li>
-                    {/*<li className="nav-item">*/}
-                    {/*    <NavLink to="/profile" className="nav-link" activeClassName="nav-link--active">Profile</NavLink>*/}
-                    {/*</li>*/}
                     {isAuthenticated ? (
                         <Button className={'button button-nav nav-item'} type="button" onClick={() => logout()}>
                             Logout

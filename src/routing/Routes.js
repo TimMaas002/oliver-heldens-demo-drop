@@ -6,7 +6,6 @@ import {
 import Home from "../pages/home/Home";
 import UploadList from "../pages/uploadList/UploadList";
 import DetailPage from "../pages/detailPage/DetailPage";
-import AdminDetailPage from "../pages/detailPage/AdminDetailPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Feedback from "../pages/feedback/Feedback";
 import SignIn from "../pages/signIn/SignIn";
@@ -26,12 +25,9 @@ function Routes() {
                 <PrivateRoute path="/home-upload-list">
                     <UploadList/>
                 </PrivateRoute>
-                <PrivateRoute path="/detailpage">
+                <PrivateRoute path="/uploadforms/:id">
                     <DetailPage/>
                 </PrivateRoute>
-                <AdminPrivateRoute path="/admin-detailpage">
-                    <AdminDetailPage/>
-                </AdminPrivateRoute>
                 <AdminPrivateRoute path="/dashboard">
                     <Dashboard/>
                 </AdminPrivateRoute>

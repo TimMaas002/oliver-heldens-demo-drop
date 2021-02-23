@@ -1,9 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
 import DashboardItem from "../../components/dashboardItem/DashboardItem";
+import axios from "axios";
 
 function Dashboard() {
+
+    const [uploads, setUploads] = useState([]);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        async function getProtectedData() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:8080/api/uploadforms',{
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+                setUploads(response.data);
+            } catch (e) {
+                setError('Something went wrong while getting data')
+            }
+        }
+        getProtectedData();
+    },[])
 
     return(
         <>
@@ -15,26 +38,15 @@ function Dashboard() {
                 </header>
 
                 <div className="dashboard-list__container">
-                    <DashboardItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
-                    <DashboardItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
-                    <DashboardItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
-                    <DashboardItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
+                    {uploads.map((upload) => {
+                        return <DashboardItem
+                            key={upload.id}
+                            title={upload.artist_name}
+                            subTitle={upload.song_name}
+                            body={upload.message}
+                            link={`/uploadforms/${upload.id}`}
+                        />
+                    })}
                 </div>
             </div>
         </>

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 
-function DashboardItem({ title, subTitle, body }) {
+function DashboardItem({ title, subTitle, body, link }) {
 
     const history = useHistory();
 
@@ -14,14 +14,13 @@ function DashboardItem({ title, subTitle, body }) {
             <div className="dashboard-item">
                 <div className="dashboard-item__title"><h4>{title}</h4></div>
                 <div className="dashboard-item__subTitle"><h5>{subTitle}</h5></div>
-                <div className="dashboard-item__body">
-                    <p>{body}</p>
-                </div>
+                <div className="dashboard-item__body"><p>{body}</p></div>
                 <div className="dashboard-item__redirect">
                     <button type="button">
-                        <a href="/admin-detailpage">Read more</a>
+                        <a href={link}>Read more</a>
                     </button>
                 </div>
+
                 <Button
                     type="button"
                     className={"button button-dashboard button-dashboard__purple"}

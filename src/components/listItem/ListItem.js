@@ -1,7 +1,7 @@
 import React from 'react';
 import './ListItem.css';
 
-function ListItem({ title, subTitle, body }) {
+function ListItem({ title, subTitle, body, link }) {
 
     return(
         <>
@@ -11,7 +11,7 @@ function ListItem({ title, subTitle, body }) {
                 <div className="list-item__body"><p>{body}</p></div>
                 <div className="list-item__redirect">
                     <button type="button">
-                        <a href="/detailpage">Read more</a>
+                        <a href={link}>Read more</a>
                     </button>
                 </div>
             </div>

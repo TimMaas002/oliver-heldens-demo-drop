@@ -1,17 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './DetailPage.css';
-// import Button from "../../components/button/Button";
+import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
+import { faCommentAlt, faDownload, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useHistory, useParams } from "react-router-dom";
+import axios from "axios";
+import { useAuthState } from "../../context/AuthContext";
 
 function DetailPage() {
 
+    const { id } = useParams();
+    const { isAdmin } = useAuthState();
+
+    const [error, setError] = useState('');
+    const [upload, setUpload] = useState('');
+
     const history = useHistory()
+
+    useEffect(() =>{
+        getUpload();
+    }, [])
+
+    async function getUpload() {
+        setError('');
+
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:8080/api/uploadforms/${id}`,{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            setUpload(response.data);
+
+        } catch (e) {
+            setError('Something went wrong while getting data')
+        }
+    }
 
     return(
         <>
             <div className="background-img__detailpage">
+
                 <div className="detailpage-header">
                 </div>
                 <div className="detailpage-container">
@@ -19,24 +50,38 @@ function DetailPage() {
                         <div className="detailpage__arrow">
                             <FontAwesomeIcon icon={faArrowLeft} onClick={() => {history.goBack()}}/>
                         </div>
-                        <h2 className="detailpage-container__title">Name Artist</h2>
-                        <h4 className="detailpage-container__subTitle">Song Name</h4>
-                        <p className="detailpage-container__info">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda autem cumque
-                            deserunt dignissimos dolores ducimus eius ex fugiat harum incidunt iste nam neque nihil
-                            numquam odit officiis pariatur quae, quaerat quia quidem quis rem reprehenderit sint
-                            tempora tenetur ullam. Doloribus, fugit, iure. A animi autem debitis distinctio
-                            doloremque ea earum, esse est et ex exercitationem facere, fugit impedit libero nam nostrum
-                            omnis perferendis porro praesentium quas reprehenderit similique tempora. Accusantium
-                            aliquam consectetur consequatur culpa et iusto maiores officia quae veritatis voluptates?
-                            Consectetur delectus dicta ex fugiat molestiae obcaecati quas quis tenetur! Commodi
-                            delectus doloremque eius eum magni officia quae quisquam ullam voluptatem. Aliquam
-                            incidunt itaque magnam nobis odit perferendis praesentium provident quas quod vel?
-                            Accusamus aperiam beatae, cum debitis dolorem error officia voluptate! Accusantium
-                            aliquid autem consequuntur esse ipsum quidem repudiandae soluta tempora. Accusantium
-                            asperiores consectetur deserunt, dignissimos ducimus error eum excepturi illum labore
-                        </p>
+                        <h2 className="detailpage-container__title">{upload.artist_name}</h2>
+                        <h4 className="detailpage-container__subTitle">{upload.song_name}</h4>
+                        <p className="detailpage-container__info">{upload.message}</p>
                     </div>
+                    {isAdmin ? (
+                        <div className="detailpage-container__buttons">
+                            <Button
+                                type="button"
+                                className={"button button-detailpage button-detailpage__purple"}
+                                onClick={() => {history.push('/')}}
+                            >
+                                <div className="detailpage__icon">
+                                    <FontAwesomeIcon icon={faDownload} onClick={() => {history.push('/')}}/>
+                                </div>
+                                download
+                            </Button>
+                            <Button
+                                type="button"
+                                className={"button button-detailpage button-detailpage__orange"}
+                                onClick={() => {history.push('/feedback')}}
+                            >
+                                <div className="detailpage__icon">
+                                    <FontAwesomeIcon icon={faCommentAlt} onClick={() => {history.push('/feedback')}}/>
+                                </div>
+                                feedback
+                            </Button>
+                        </div>
+                    ) : (
+                        <div>
+                            <p>Oliver heldens and his team are giving your demo feedback!</p>
+                        </div>
+                    )}
                 </div>
                 <div className="detailpage-header">
                 </div>
