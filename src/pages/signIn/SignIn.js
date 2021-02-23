@@ -8,7 +8,7 @@ import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 
 function SignIn() {
-    const { login } = useContext(AuthContext);
+    const { login, getAdmin } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
 
     // const [email, setEmail] = useState('');
@@ -26,10 +26,17 @@ function SignIn() {
             // je wordt gepusht na het inloggen naar de home pagina
             history.push('/');
         }
+
     }, [isAuthenticated])
 
+    useEffect(() => {
+        if (getAdmin === true) {
+            history.push('/dashboard')
+        }
+    }, [getAdmin])
+
     async function onSubmit(e) {
-        toggleLoading(true);
+        // toggleLoading(true);
         setError('');
         e.preventDefault();
 
@@ -47,7 +54,7 @@ function SignIn() {
             console.error(e);
             setError('Inloggen is mislukt');
         }
-        toggleLoading(false);
+        // toggleLoading(false);
     }
 
     return (
@@ -59,14 +66,6 @@ function SignIn() {
                 <div className="form-container__signIn">
                     <h1>Demodrop</h1>
                     <form onSubmit={onSubmit} className="form-signIn">
-                        {/*<InputField*/}
-                        {/*    id="password-field"*/}
-                        {/*    type="email"*/}
-                        {/*    value={email}*/}
-                        {/*    onChange={(e) => setEmail(e.target.value)}*/}
-                        {/*>*/}
-                        {/*    Email*/}
-                        {/*</InputField>*/}
 
                         <InputField
                             id="username-field"
@@ -87,15 +86,6 @@ function SignIn() {
                         >
                             Password
                         </InputField>
-
-                        {/*<InputField*/}
-                        {/*    id="password-field"*/}
-                        {/*    type="password"*/}
-                        {/*    value={confirmPassword}*/}
-                        {/*    onChange={(e) => setUsername(e.target.value)}*/}
-                        {/*>*/}
-                        {/*    Confirm Password*/}
-                        {/*</InputField>*/}
 
                         <Button
                             type="submit"

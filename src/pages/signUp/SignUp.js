@@ -61,23 +61,6 @@ function SignUp() {
                     <h1>Register</h1>
                     {createUserSuccess === true && <p>Het is gelukt met registreren! Log je nu in!</p>}
                     <form onSubmit={onSubmit} className="form-signUp">
-                        {/*<InputField*/}
-                        {/*    id="first-name-field"*/}
-                        {/*    type="text"*/}
-                        {/*    value={firstName}*/}
-                        {/*    onChange={(e) => setFirstName(e.target.value)}*/}
-                        {/*>*/}
-                        {/*    First name*/}
-                        {/*</InputField>*/}
-
-                        {/*<InputField*/}
-                        {/*    id="last-name-field"*/}
-                        {/*    type="text"*/}
-                        {/*    value={lastName}*/}
-                        {/*    onChange={(e) => setLastName(e.target.value)}*/}
-                        {/*>*/}
-                        {/*    Last name*/}
-                        {/*</InputField>*/}
 
                         <InputField
                             id="username-field"
@@ -108,15 +91,6 @@ function SignUp() {
                         >
                             Password
                         </InputField>
-
-                        {/*<InputField*/}
-                        {/*    id="confirm-password-field"*/}
-                        {/*    type="password"*/}
-                        {/*    value={confirmPassword}*/}
-                        {/*    onChange={(e) => setConfirmPassword(e.target.value)}*/}
-                        {/*>*/}
-                        {/*    Confirm Password*/}
-                        {/*</InputField>*/}
 
                         <Button
                             type="submit"

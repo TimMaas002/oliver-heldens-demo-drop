@@ -1,8 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
+
+    const history = useHistory()
+    const [admin, setAdmin] = useState(false);
+
     // maak hier de authstate aan
     const [authState, setAuthState] = useState({
         status: 'pending',
@@ -11,14 +17,47 @@ function AuthContextProvider({ children }) {
     });
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
 
-        // een timeout waarbij de status op done wordt gezet middels een 'delay' van 2000ms
-        setTimeout(() => {
+        async function getUserInfo() {
+            try {
+                const response = await axios.get('http://localhost:8080/api/users', {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                setAuthState({
+                    ...authState,
+                    user: {
+                        id: response.data.id,
+                        username: response.data.username,
+                        email: response.data.email,
+                    },
+                    status: 'done',
+                });
+
+            } catch (e) {
+                setAuthState({
+                    ...authState,
+                    user: null,
+                    error: e,
+                    status: 'done'
+                });
+            }
+        }
+
+        if (authState.user === null && token) {
+            getUserInfo();
+        } else {
             setAuthState({
                 ...authState,
-                status: 'done',
-            })
-        }, 2000)
+                error: null,
+                user: null,
+                status: 'done'
+            });
+        }
     }, []);
 
     function login(data) {
@@ -36,7 +75,16 @@ function AuthContextProvider({ children }) {
                 roles: data.roles,
             }
         })
+        isAdmin(data.roles);
+    }
 
+    function isAdmin(data){
+        if (data.roles[0].includes("ROLE_ADMIN")) {
+            setAdmin(true);
+        } else {
+            setAdmin(false);
+        }
+        console.log(admin);
     }
 
     function logout() {
@@ -47,12 +95,19 @@ function AuthContextProvider({ children }) {
             ...authState,
             user: null,
         })
+        setAdmin(false);
+        history.push('/signin');
+    }
+
+    function loginAdmin() {
+        return admin;
     }
 
     const providerData = {
         ...authState,
         login: login,
         logout: logout,
+        loginAdmin: loginAdmin,
     }
 
     return (

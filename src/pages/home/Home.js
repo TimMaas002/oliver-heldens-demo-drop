@@ -11,8 +11,21 @@ function Home() {
     const [uploadFormFile, setUploadFormFile] = useState('');
     const [uploadFormMessage, setUploadFormMessage] = useState('');
 
-    function handleSubmit(e) {
+    //artist_name: uploadFormArtistName,
+    //email: uploadFormEmail,
+    //song_name: uploadFormSongName,
+    //upload_file: uploadFormFile,
+    //message: uploadFormMessage,
+
+
+    async function handleSubmit(e) {
         e.preventDefault();
+
+        try {
+
+        } catch (e) {
+
+        }
         console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
     }
 

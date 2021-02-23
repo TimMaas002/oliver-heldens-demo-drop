@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt, faDownload, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 
-function DetailPage() {
+function AdminDetailPage() {
 
     const history = useHistory()
 
@@ -37,6 +37,28 @@ function DetailPage() {
                             asperiores consectetur deserunt, dignissimos ducimus error eum excepturi illum labore
                         </p>
                     </div>
+                    <div className="detailpage-container__buttons">
+                        <Button
+                            type="button"
+                            className={"button button-detailpage button-detailpage__purple"}
+                            onClick={() => {history.push('/')}}
+                        >
+                            <div className="detailpage__icon">
+                                <FontAwesomeIcon icon={faDownload} onClick={() => {history.push('/')}}/>
+                            </div>
+                            download
+                        </Button>
+                        <Button
+                            type="button"
+                            className={"button button-detailpage button-detailpage__orange"}
+                            onClick={() => {history.push('/feedback')}}
+                        >
+                            <div className="detailpage__icon">
+                                <FontAwesomeIcon icon={faCommentAlt} onClick={() => {history.push('/feedback')}}/>
+                            </div>
+                            feedback
+                        </Button>
+                    </div>
                 </div>
                 <div className="detailpage-header">
                 </div>
@@ -45,4 +67,4 @@ function DetailPage() {
     );
 }
 
-export default DetailPage;
+export default AdminDetailPage;
