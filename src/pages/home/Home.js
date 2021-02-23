@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import './Home.css';
 import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
+import axios from 'axios';
 
 function Home() {
+    // form states
     const [uploadFormArtistName, setUploadFormArtistName] = useState('');
     const [uploadFormEmail, setUploadFormEmail] = useState('');
     const [uploadFormSongName, setUploadFormSongName] = useState('');
     const [uploadFormFile, setUploadFormFile] = useState('');
     const [uploadFormMessage, setUploadFormMessage] = useState('');
+
+    const [error, setError] = useState('');
 
     //artist_name: uploadFormArtistName,
     //email: uploadFormEmail,
@@ -17,16 +21,33 @@ function Home() {
     //upload_file: uploadFormFile,
     //message: uploadFormMessage,
 
+    //  e.preventDefault();
+    //  console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
 
     async function handleSubmit(e) {
+        setError('');
         e.preventDefault();
-
         try {
+            const formData = {
+                artist_name: uploadFormArtistName,
+                email: uploadFormEmail,
+                song_name: uploadFormSongName,
+                upload_file: uploadFormFile,
+                message: uploadFormMessage
+            }
+            const token = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:8080/api/uploadforms', formData,{
+                header: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            console.log(response.data);
 
         } catch (e) {
-
+            console.error(e)
+            setError('Er is iets misgegaan met het uploaden');
         }
-        console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
     }
 
     return (
