@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import './UploadList.css';
 import ListItem from "../../components/listItem/ListItem";
+import axios from 'axios';
 
 function UploadList() {
+    const [uploads, setUploads] = useState([]);
+    const [error, setError] = useState('');
 
+    useEffect(() => {
+        async function getProtectedData() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:8080/api/uploadforms',{
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+                setUploads(response.data);
+            } catch (e) {
+                setError('Something went wrong while getting data')
+            }
+        }
+        getProtectedData();
+    },[])
 
     return(
         <>
@@ -19,26 +40,14 @@ function UploadList() {
                 </header>
 
                 <div className="upload-list__container">
-                    <ListItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
-                    <ListItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
-                    <ListItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
-                    <ListItem
-                        title="Name Artist"
-                        subTitle="Song Name"
-                        body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi..."
-                    />
+                    {uploads.map((upload) => {
+                        return <ListItem
+                            key={upload.id}
+                            title={upload.artist_name}
+                            subTitle={upload.song_name}
+                            body={upload.message}
+                        />
+                    })}
                 </div>
             </div>
         </>
