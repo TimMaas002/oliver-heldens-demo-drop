@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './SignUp.css';
 import logo from "../../assets/logo/heldeep-logo-white.png";
 import axios from "axios";
@@ -11,10 +11,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [confirmPassword, setConfirmPassword] = useState('');
     const [username, setUsername] = useState('');
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
 
     const [createUserSuccess, setCreateUserSuccess] = useState(false);
     const [loading, toggleLoading] = useState(false);

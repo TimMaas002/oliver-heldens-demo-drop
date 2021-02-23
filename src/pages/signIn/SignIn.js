@@ -11,9 +11,7 @@ function SignIn() {
     const { login, getAdmin } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
 
-    // const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [confirmPassword, setConfirmPassword] = useState('');
     const [username, setUsername] = useState('');
 
     const history = useHistory();

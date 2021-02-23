@@ -1,8 +1,8 @@
 import React from 'react';
 import './DetailPage.css';
-import Button from "../../components/button/Button";
+// import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCommentAlt, faDownload, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 
 function DetailPage() {

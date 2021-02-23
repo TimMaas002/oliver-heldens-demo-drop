@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState }  from 'react';
+import React, { useContext, useState }  from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import './Navbar.css';
 import Logo from '../../assets/logo/heldeep-logo-white.png';

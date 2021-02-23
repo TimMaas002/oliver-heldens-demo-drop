@@ -36,7 +36,7 @@ function AuthContextProvider({ children }) {
                         email: response.email,
                     },
                     status: 'done',
-                });
+                })
 
             } catch (e) {
                 setAuthState({
@@ -79,7 +79,7 @@ function AuthContextProvider({ children }) {
     }
 
     function isAdmin(data){
-        if (data.roles[0].includes("ROLE_ADMIN")) {
+        if (data[0].includes("ROLE_ADMIN")) {
             setAdmin(true);
         } else {
             setAdmin(false);
