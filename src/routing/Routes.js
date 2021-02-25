@@ -31,7 +31,7 @@ function Routes() {
                 <AdminPrivateRoute path="/dashboard">
                     <Dashboard/>
                 </AdminPrivateRoute>
-                <AdminPrivateRoute path="/feedback">
+                <AdminPrivateRoute path="/feedback/:id">
                     <Feedback/>
                 </AdminPrivateRoute>
                 <Route exact path="/signin">

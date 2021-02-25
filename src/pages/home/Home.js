@@ -14,8 +14,7 @@ function Home() {
     const [uploadFormMessage, setUploadFormMessage] = useState('');
 
     const [error, setError] = useState('');
-
-    //  console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
+    const [createUserSuccess, setCreateUserSuccess] = useState(false);
 
     async function handleSubmit(e) {
         setError('');
@@ -28,6 +27,7 @@ function Home() {
                 upload_file: uploadFormFile,
                 message: uploadFormMessage
             }
+
             const token = localStorage.getItem('token');
             const response = await axios.post('http://localhost:8080/api/uploadforms', formData,{
                 header: {
@@ -35,7 +35,13 @@ function Home() {
                     Authorization: `Bearer ${token}`,
                 }
             });
+
+            if (response.status === 201) {
+                setCreateUserSuccess(true);
+            }
+
             console.log(response.data);
+            console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
 
         } catch (e) {
             console.error(e)
@@ -108,6 +114,7 @@ function Home() {
                                 id="personal-message"
                                 cols="30"
                                 rows="5"
+                                maxLength="250"
                                 placeholder="This music was inspired by..."
                                 value={uploadFormMessage}
                                 onChange={(e) => setUploadFormMessage(e.target.value)}
@@ -116,6 +123,7 @@ function Home() {
                                 className="button button__orange button-form"
                                 type="submit"
                             >Submit Demo</Button>
+                            {createUserSuccess === true && <p>The demo was uploaded succesfully!</p>}
                         </fieldset>
                     </form>
                 </div>

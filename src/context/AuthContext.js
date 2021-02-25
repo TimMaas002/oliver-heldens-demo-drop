@@ -7,7 +7,6 @@ const AuthContext = createContext({});
 function AuthContextProvider({ children }) {
 
     const history = useHistory()
-    const [admin, setAdmin] = useState(false);
 
     // maak hier de authstate aan
     const [authState, setAuthState] = useState({
@@ -21,29 +20,34 @@ function AuthContextProvider({ children }) {
 
         async function getUserInfo() {
             try {
-                const response = await axios.get('http://localhost:8080/api/users', {
+                // We kunnen de gebruikersdata ophalen omdat we onszelf authenticeren met de token
+                const response = await axios.get(`http://localhost:8080/api/users`, {
                         headers: {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         },
                     }
                 );
+
+                // met het resultaat vullen we de context
                 setAuthState({
                     ...authState,
                     user: {
                         id: response.id,
                         username: response.username,
                         email: response.email,
+                        roles: response.roles,
                     },
                     status: 'done',
-                })
+                });
 
             } catch (e) {
+                // Gaat er toch iets mis? Dan zetten we de error in de context
                 setAuthState({
                     ...authState,
                     user: null,
                     error: e,
-                    status: 'done'
+                    status: 'done',
                 });
             }
         }
@@ -58,6 +62,7 @@ function AuthContextProvider({ children }) {
                 status: 'done'
             });
         }
+
     }, []);
 
     function login(data) {
@@ -73,43 +78,26 @@ function AuthContextProvider({ children }) {
                 username: data.username,
                 email: data.email,
                 roles: data.roles,
+                isAdmin: data.roles.includes("ROLE_ADMIN"),
             }
         })
-        isAdmin(data.roles);
-    }
-
-    function isAdmin(data){
-        if (data[0].includes("ROLE_ADMIN")) {
-            setAdmin(true);
-        } else {
-            setAdmin(false);
-        }
-        console.log(admin);
+        // console.log("USER ID", data.id);
     }
 
     function logout() {
-        // maak de localStorage leeg
         localStorage.clear();
-        // zet de user waarde weer op null
         setAuthState({
             ...authState,
             user: null,
         })
-
-        setAdmin(false);
-        history.push('/signin');
-    }
-
-    function getAdmin() {
-        return admin;
+        history.push('/login');
     }
 
     const providerData = {
         ...authState,
-        login: login,
-        logout: logout,
-        getAdmin: getAdmin,
-    }
+        login,
+        logout,
+    };
 
     return (
         <AuthContext.Provider value={providerData}>
@@ -126,10 +114,12 @@ function useAuthState() {
     // en als de gebruiker in de authstate staat
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
+    const isAdmin = authState.user !==null && authState.user.isAdmin;
 
     return {
         ...authState,
         isAuthenticated: isAuthenticated,
+        isAdmin: isAdmin,
     }
 }
 

@@ -56,7 +56,7 @@ function SignUp() {
                         <FontAwesomeIcon icon={faArrowLeft} onClick={() => {history.push('/signin')}}/>
                     </div>
                     <h1>Register</h1>
-                    {createUserSuccess === true && <p>Het is gelukt met registreren! Log je nu in!</p>}
+                    {createUserSuccess === true && <p>Register was succesfully, you can now sign in.</p>}
                     <form onSubmit={onSubmit} className="form-signUp">
 
                         <InputField

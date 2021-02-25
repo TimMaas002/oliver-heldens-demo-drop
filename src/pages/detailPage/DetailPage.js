@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './DetailPage.css';
 import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt, faDownload, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import { useAuthState } from "../../context/AuthContext";
+import {useAuthState} from "../../context/AuthContext";
 
 function DetailPage() {
 
-    const { id } = useParams();
     const { isAdmin } = useAuthState();
 
+    const { id } = useParams();
     const [error, setError] = useState('');
     const [upload, setUpload] = useState('');
 
@@ -19,6 +19,7 @@ function DetailPage() {
 
     useEffect(() =>{
         getUpload();
+
     }, [])
 
     async function getUpload() {
@@ -42,7 +43,6 @@ function DetailPage() {
     return(
         <>
             <div className="background-img__detailpage">
-
                 <div className="detailpage-header">
                 </div>
                 <div className="detailpage-container">
@@ -54,6 +54,7 @@ function DetailPage() {
                         <h4 className="detailpage-container__subTitle">{upload.song_name}</h4>
                         <p className="detailpage-container__info">{upload.message}</p>
                     </div>
+
                     {isAdmin ? (
                         <div className="detailpage-container__buttons">
                             <Button
@@ -82,8 +83,6 @@ function DetailPage() {
                             <p>Oliver heldens and his team are giving your demo feedback!</p>
                         </div>
                     )}
-                </div>
-                <div className="detailpage-header">
                 </div>
             </div>
         </>

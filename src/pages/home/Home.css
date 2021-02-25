@@ -37,6 +37,14 @@
     width: 100%;
 }
 
+.form-container p {
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 10px 0;
+    text-align: center;
+}
+
 .form-container label {
     color: #fff;
     text-transform: uppercase;

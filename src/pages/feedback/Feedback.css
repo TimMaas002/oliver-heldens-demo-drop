@@ -47,6 +47,14 @@
     height: 100%
 }
 
+.feedback-container p {
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 10px 0;
+    text-align: center;
+}
+
 .feedback-container input {
     margin-bottom: 2%;
 }

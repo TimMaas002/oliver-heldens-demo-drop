@@ -5,7 +5,6 @@ import Navbar from "./components/navbar/Navbar";
 import Routes from "./routing/Routes";
 
 function App() {
-    // const { isAuthenticated } = useAuthState();
 
   return (
       <>

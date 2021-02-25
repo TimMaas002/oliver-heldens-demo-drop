@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputField.css';
 
-function InputField({ children, type, id, value, onChange, placeholder, className }) {
+function InputField({ children, type, id, value, onChange, placeholder, className, accept }) {
 
     return (
         <>
@@ -15,6 +15,7 @@ function InputField({ children, type, id, value, onChange, placeholder, classNam
                         id={id}
                         value={value}
                         placeholder={placeholder}
+                        accept={accept}
                         onChange={onChange}
                     />
                 </label>

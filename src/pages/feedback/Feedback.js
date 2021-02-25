@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Feedback.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import Button from "../../components/button/Button";
 import InputField from "../../components/inputField/InputField";
 import axios from 'axios';
 
 function Feedback() {
+
+    // const { id } = useParams()
 
     const [message, setMessage] = useState([]);
 
@@ -15,9 +17,9 @@ function Feedback() {
     const [feedbackArtistName, setFeedbackArtistName] = useState('');
 
     const history = useHistory();
+    const [createUserSuccess, setCreateUserSuccess] = useState(false);
 
-
-    async function getFeedback() {
+    async function getFeedbackOne() {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(`http://localhost:8080/api/feedbacktexts/`, {
@@ -34,8 +36,60 @@ function Feedback() {
         }
     }
 
+    async function getFeedbackTwo() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:8080/api/feedbacktexts/`, {
+                header: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            // console.log(response.data);
+            setMessage(response.data);
+            setFeedbackMessage(message[1].message)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    async function getFeedbackThree() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:8080/api/feedbacktexts/`, {
+                header: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            // console.log(response.data);
+            setMessage(response.data);
+            setFeedbackMessage(message[2].message)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    async function getFeedbackFour() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:8080/api/feedbacktexts/`, {
+                header: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            // console.log(response.data);
+            setMessage(response.data);
+            setFeedbackMessage(message[3].message)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
     function handleSubmit(e) {
-        e.preventDefault(e)
+        e.preventDefault(e);
+        setCreateUserSuccess(true);
     }
 
     return (
@@ -56,19 +110,22 @@ function Feedback() {
                         <Button
                             type="button"
                             className="button-feedback"
-                            onClick={getFeedback}
+                            onClick={getFeedbackOne}
                         >i like this!...</Button>
                         <Button
                             type="button"
                             className="button-feedback"
+                            onClick={getFeedbackTwo}
                         >i would change...</Button>
                         <Button
                             type="button"
                             className="button-feedback"
+                            onClick={getFeedbackThree}
                         >i want to use this...</Button>
                         <Button
                             type="button"
                             className="button-feedback"
+                            onClick={getFeedbackFour}
                         >for the future...</Button>
                     </div>
                     <div className="feedback-container__form">
@@ -97,6 +154,7 @@ function Feedback() {
                                 className="button button-form button__orange"
                                 type="submit"
                             >Sent feedback</Button>
+                            {createUserSuccess === true && <p>The feedback was sent succesfully to (artist_name)</p>}
                         </form>
                     </div>
                 </div>

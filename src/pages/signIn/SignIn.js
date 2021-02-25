@@ -8,8 +8,8 @@ import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 
 function SignIn() {
-    const { login, getAdmin } = useContext(AuthContext);
-    const { isAuthenticated } = useAuthState();
+    const { login } = useContext(AuthContext);
+    const { isAuthenticated, isAdmin } = useAuthState();
 
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
@@ -21,17 +21,15 @@ function SignIn() {
 
     useEffect(() => {
         if (isAuthenticated === true) {
-            // je wordt gepusht na het inloggen naar de home pagina
-            history.push('/');
+            if(isAdmin) {
+                // je wordt gepusht na het inloggen naar de dashboard pagina als je admin bent
+                history.push('/dashboard');
+            } else {
+                // je wordt gepusht na het inloggen naar de home pagina als je user bent
+                history.push('/');
+            }
         }
-
     }, [isAuthenticated])
-
-    useEffect(() => {
-        if (getAdmin === true) {
-            history.push('/dashboard')
-        }
-    }, [getAdmin])
 
     async function onSubmit(e) {
         // toggleLoading(true);
@@ -39,7 +37,7 @@ function SignIn() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/signin', {
+            const response = await axios.post(`http://localhost:8080/api/auth/signin`, {
                 //de tweede komt uit het formulier, de eerste is de naam wat moet worden meegegeven naar de database
                 username: username,
                 password: password,
@@ -48,6 +46,7 @@ function SignIn() {
             // we hebben teruggekregen alles op de juiste plek zetten
             // handel het inloggen aan de voorkant af met de data die we binnen hebben gekregen
             login(response.data);
+
         } catch(e) {
             console.error(e);
             setError('Inloggen is mislukt');
