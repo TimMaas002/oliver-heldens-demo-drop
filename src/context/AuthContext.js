@@ -114,7 +114,7 @@ function useAuthState() {
     // en als de gebruiker in de authstate staat
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
-    const isAdmin = authState.user !==null && authState.user.isAdmin;
+    const isAdmin = authState.user !== null && authState.user.isAdmin;
 
     return {
         ...authState,

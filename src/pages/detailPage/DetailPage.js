@@ -54,7 +54,6 @@ function DetailPage() {
                         <h4 className="detailpage-container__subTitle">{upload.song_name}</h4>
                         <p className="detailpage-container__info">{upload.message}</p>
                     </div>
-
                     {isAdmin ? (
                         <div className="detailpage-container__buttons">
                             <Button
@@ -83,6 +82,7 @@ function DetailPage() {
                             <p>Oliver heldens and his team are giving your demo feedback!</p>
                         </div>
                     )}
+                    {/*{isAdmin && }*/}
                 </div>
             </div>
         </>

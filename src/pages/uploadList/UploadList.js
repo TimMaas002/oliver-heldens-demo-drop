@@ -13,7 +13,7 @@ function UploadList() {
             setError('');
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:8080/api/uploadforms',{
+                const response = await axios.get(`http://localhost:8080/api/uploadforms`,{
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,

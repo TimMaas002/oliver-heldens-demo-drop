@@ -101,6 +101,7 @@ function Home() {
                                 id="music-upload"
                                 className={"input-field input-field--white"}
                                 type="file"
+                                accept=".mp3"
                                 placeholder="amazing-demo.mp3"
                                 value={uploadFormFile}
                                 onChange={(e) => setUploadFormFile(e.target.value)}
