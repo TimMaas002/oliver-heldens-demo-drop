@@ -13,6 +13,7 @@ function Navbar() {
 
     const [openMenu, toggleOpenMenu] = useState(false);
 
+    // Hier worden logout en isAuthenticated geïmporteerd om gebruikt te worden op de pagina
     const { logout } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
 
@@ -32,6 +33,7 @@ function Navbar() {
                     <li className="nav-item">
                         <NavLink to="/about" className="nav-link" activeClassName="nav-link--active">About</NavLink>
                     </li>
+                    {/*De button veranderd wanneer iemand geauthorizeerd is.*/}
                     {isAuthenticated ? (
                         <Button className={'button button-nav nav-item'} type="button" onClick={() => logout()}>
                             Logout
@@ -42,6 +44,7 @@ function Navbar() {
                         </Button>
                     )}
                 </ul>
+                {/*Wanneer de viewport op een bepaalde hoogte komt, veranderd het menu in een hamburger menu*/}
                 <div className="menu-icon">
                     <FontAwesomeIcon icon={faBars} onClick={() => toggleOpenMenu(!openMenu)}/>
                 </div>

@@ -6,10 +6,13 @@ import { faCommentAlt, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 
 function DashboardItem({ title, subTitle, body, link }) {
-
+    // Bijna identiek aan het listItem component.
+    // Bij het dashboard item worden er nog extra buttons laten zien
+    // om door te linken naar de feedback pagina
+    // en als download knop voor de geüploade file (is momenteel niet uitgewerkt)
     const history = useHistory();
 
-    return(
+    return (
         <>
             <div className="dashboard-item">
                 <div className="dashboard-item__title"><h4>{title}</h4></div>

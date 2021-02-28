@@ -2,8 +2,9 @@ import React from 'react';
 import './ListItem.css';
 
 function ListItem({ title, subTitle, body, link }) {
+// hier wordt de list-item aangemaakt welke gebruikt wordt in de upload list van de user
 
-    return(
+    return (
         <>
             <div className="list-item">
                 <div className="list-item__title"><h4>{title}</h4></div>

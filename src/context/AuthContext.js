@@ -8,7 +8,6 @@ function AuthContextProvider({ children }) {
 
     const history = useHistory()
 
-    // maak hier de authstate aan
     const [authState, setAuthState] = useState({
         status: 'pending',
         error: null,
@@ -20,7 +19,6 @@ function AuthContextProvider({ children }) {
 
         async function getUserInfo() {
             try {
-                // We kunnen de gebruikersdata ophalen omdat we onszelf authenticeren met de token
                 const response = await axios.get(`http://localhost:8080/api/users`, {
                         headers: {
                             "Content-Type": "application/json",
@@ -29,7 +27,7 @@ function AuthContextProvider({ children }) {
                     }
                 );
 
-                // met het resultaat vullen we de context
+                // Met het resultaat van de axios get, wordt de authstate aangevuld.
                 setAuthState({
                     ...authState,
                     user: {
@@ -42,7 +40,6 @@ function AuthContextProvider({ children }) {
                 });
 
             } catch (e) {
-                // Gaat er toch iets mis? Dan zetten we de error in de context
                 setAuthState({
                     ...authState,
                     user: null,
@@ -66,13 +63,11 @@ function AuthContextProvider({ children }) {
     }, []);
 
     function login(data) {
-        console.log(data);
         // plaats hier de accesstoken in je localstorage
         localStorage.setItem('token', data.accessToken)
 
         setAuthState({
             ...authState,
-            // voeg aan de originele user binnen authState onderstaande informatie toe
             user: {
                 // de data.'info' komt uit het object wat we binnen krijgen vanuit de database
                 username: data.username,
@@ -81,10 +76,10 @@ function AuthContextProvider({ children }) {
                 isAdmin: data.roles.includes("ROLE_ADMIN"),
             }
         })
-        // console.log("USER ID", data.id);
     }
 
     function logout() {
+        // clear hier de accesstoken uit je localstorage
         localStorage.clear();
         setAuthState({
             ...authState,
@@ -110,10 +105,13 @@ function AuthContextProvider({ children }) {
 function useAuthState() {
     const authState = useContext(AuthContext);
 
-    // iemand is geauthoriseerd wanner de status === done
+    // iemand is geauthoriseerd wanneer de status === done
     // en als de gebruiker in de authstate staat
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
+    // iemand is admin wanneer de gebruiker in de authstate staat
+    // de status op done staat
+    // en de user de isAdmin attribuut heeft
     const isAdmin = authState.user !== null && authState.user.isAdmin;
 
     return {
