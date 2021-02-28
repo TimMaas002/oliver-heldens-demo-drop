@@ -5,6 +5,7 @@ import ListItem from "../../components/listItem/ListItem";
 import axios from 'axios';
 
 function UploadList() {
+
     const [uploads, setUploads] = useState([]);
     const [error, setError] = useState('');
 
@@ -27,7 +28,7 @@ function UploadList() {
         getProtectedData();
     },[])
 
-    return(
+    return (
         <>
             <div className="background-img__upload-list">
                 <header className="header-container">
@@ -52,7 +53,7 @@ function UploadList() {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default UploadList;

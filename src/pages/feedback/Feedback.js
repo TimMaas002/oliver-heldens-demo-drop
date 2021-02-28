@@ -9,8 +9,6 @@ import axios from 'axios';
 
 function Feedback() {
 
-    // const { id } = useParams()
-
     const [message, setMessage] = useState([]);
 
     const [feedbackMessage, setFeedbackMessage] = useState('');
@@ -19,6 +17,7 @@ function Feedback() {
     const history = useHistory();
     const [createUserSuccess, setCreateUserSuccess] = useState(false);
 
+    // Onderstaand zijn de 4 async functions om de feedbacktext uit de database op te vragen
     async function getFeedbackOne() {
         try {
             const token = localStorage.getItem('token');
@@ -154,6 +153,7 @@ function Feedback() {
                                 className="button button-form button__orange"
                                 type="submit"
                             >Sent feedback</Button>
+                            {/*geef de admin feedback dat het feedback formulier goed is verstuurd*/}
                             {createUserSuccess === true && <p>The feedback was sent succesfully to (artist_name)</p>}
                         </form>
                     </div>

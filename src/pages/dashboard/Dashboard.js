@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
 import DashboardItem from "../../components/dashboardItem/DashboardItem";
@@ -10,6 +10,8 @@ function Dashboard() {
     const [error, setError] = useState('');
 
     useEffect(() => {
+        // Via deze async function vragen we de data op van alle uploadforms
+        // die in de database te vinden zijn
         async function getProtectedData() {
             setError('');
             try {
@@ -28,7 +30,7 @@ function Dashboard() {
         getProtectedData();
     },[])
 
-    return(
+    return (
         <>
             <div className="background-img__dashboard">
                 <header className="header-container">
@@ -38,12 +40,14 @@ function Dashboard() {
                 </header>
 
                 <div className="dashboard-list__container">
+                    {/*map hier over alle uploads heen die bij de getProtectedData worden opgehaald*/}
                     {uploads.map((upload) => {
                         return <DashboardItem
                             key={upload.id}
                             title={upload.artist_name}
                             subTitle={upload.song_name}
                             body={upload.message}
+                            // link hier door naar de specifieke upload id
                             link={`/uploadforms/${upload.id}`}
                         />
                     })}

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function SignUp() {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');

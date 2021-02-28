@@ -6,7 +6,7 @@ import Button from "../../components/button/Button";
 import axios from 'axios';
 
 function Home() {
-    // form states
+    // maak hier de states aan voor het formulier
     const [uploadFormArtistName, setUploadFormArtistName] = useState('');
     const [uploadFormEmail, setUploadFormEmail] = useState('');
     const [uploadFormSongName, setUploadFormSongName] = useState('');
@@ -29,7 +29,7 @@ function Home() {
             }
 
             const token = localStorage.getItem('token');
-            const response = await axios.post('http://localhost:8080/api/uploadforms', formData,{
+            const response = await axios.post(`http://localhost:8080/api/uploadforms`, formData,{
                 header: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
@@ -39,9 +39,6 @@ function Home() {
             if (response.status === 201) {
                 setCreateUserSuccess(true);
             }
-
-            console.log(response.data);
-            console.log({uploadFormArtistName, uploadFormEmail, uploadFormSongName, uploadFormFile, uploadFormMessage});
 
         } catch (e) {
             console.error(e)
@@ -101,7 +98,6 @@ function Home() {
                                 id="music-upload"
                                 className={"input-field input-field--white"}
                                 type="file"
-                                accept=".mp3"
                                 placeholder="amazing-demo.mp3"
                                 value={uploadFormFile}
                                 onChange={(e) => setUploadFormFile(e.target.value)}
@@ -124,6 +120,7 @@ function Home() {
                                 className="button button__orange button-form"
                                 type="submit"
                             >Submit Demo</Button>
+                            {/*geef de user feedback dat de demo goed was geupload*/}
                             {createUserSuccess === true && <p>The demo was uploaded succesfully!</p>}
                         </fieldset>
                     </form>

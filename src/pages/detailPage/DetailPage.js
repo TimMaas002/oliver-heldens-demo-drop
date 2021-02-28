@@ -1,17 +1,18 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './DetailPage.css';
 import Button from "../../components/button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt, faDownload, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import {useAuthState} from "../../context/AuthContext";
+import { useAuthState } from "../../context/AuthContext";
 
 function DetailPage() {
 
     const { isAdmin } = useAuthState();
 
     const { id } = useParams();
+
     const [error, setError] = useState('');
     const [upload, setUpload] = useState('');
 
@@ -40,7 +41,7 @@ function DetailPage() {
         }
     }
 
-    return(
+    return (
         <>
             <div className="background-img__detailpage">
                 <div className="detailpage-header">
@@ -54,6 +55,7 @@ function DetailPage() {
                         <h4 className="detailpage-container__subTitle">{upload.song_name}</h4>
                         <p className="detailpage-container__info">{upload.message}</p>
                     </div>
+                    {/*Laat onderstaande buttons alleen zien als je een admin bent*/}
                     {isAdmin ? (
                         <div className="detailpage-container__buttons">
                             <Button
@@ -82,7 +84,6 @@ function DetailPage() {
                             <p>Oliver heldens and his team are giving your demo feedback!</p>
                         </div>
                     )}
-                    {/*{isAdmin && }*/}
                 </div>
             </div>
         </>

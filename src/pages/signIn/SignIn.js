@@ -32,13 +32,11 @@ function SignIn() {
     }, [isAuthenticated])
 
     async function onSubmit(e) {
-        // toggleLoading(true);
         setError('');
         e.preventDefault();
 
         try {
             const response = await axios.post(`http://localhost:8080/api/auth/signin`, {
-                //de tweede komt uit het formulier, de eerste is de naam wat moet worden meegegeven naar de database
                 username: username,
                 password: password,
             })
@@ -51,7 +49,6 @@ function SignIn() {
             console.error(e);
             setError('Inloggen is mislukt');
         }
-        // toggleLoading(false);
     }
 
     return (
