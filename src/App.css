@@ -20,38 +20,9 @@ h2 {
     font-size: 30px;
 }
 
-/*h3 {*/
-/*    font-weight: 700;*/
-/*    font-size: 25px;*/
-/*}*/
-
-/*h4 {*/
-/*    font-weight: 600;*/
-/*    font-size: 18px;*/
-/*}*/
-
-/*h5 {*/
-/*    font-weight: 400;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*h6 {*/
-/*    font-weight: 700;*/
-/*    font-size: 15px;*/
-/*}*/
-
 p {
     font-weight: 400;
     font-size: 14px;
     line-height: 26px;
     color: hsl(0, 0%, 14%);
 }
-
-/* orange colour
-hsl(32, 100%, 49%) */
-
-/* purple colour
-hsl(200, 95%, 14%) */
-
-/* black colour
-hsl(0, 0%, 14%) */
