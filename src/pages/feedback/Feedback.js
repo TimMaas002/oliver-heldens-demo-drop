@@ -33,7 +33,7 @@ function Feedback() {
 
                 setProtectedData(response.data);
             } catch(e) {
-                setFormError('Er is iets misgegaan bij het ophalen van de data')
+                setFormError('Something went wrong wile fetching data')
             }
         }
 
@@ -172,6 +172,7 @@ function Feedback() {
                                 className="button button-form button__orange"
                                 type="submit"
                             >Sent feedback</Button>
+
                             {/*geef de admin feedback dat het feedback formulier goed is verstuurd*/}
                             {createUserSuccess === true && <p>The feedback was sent succesfully to (artist_name)</p>}
                         </form>

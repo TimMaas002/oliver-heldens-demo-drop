@@ -24,7 +24,7 @@ function UploadList() {
                 })
                 setUploads(response.data);
             } catch (e) {
-                setError('Something went wrong while getting data')
+                setError('Something went wrong while fetching data')
             }
         }
         getUploadForms();
@@ -73,6 +73,7 @@ function UploadList() {
                             link={`/uploadforms/${upload.id}`}
                         />
                     })}
+                    {error && <p>{error}</p>}
                 </div>
             </div>
         </>

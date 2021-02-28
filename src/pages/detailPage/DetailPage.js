@@ -39,7 +39,7 @@ function DetailPage() {
             setUpload(response.data);
 
         } catch (e) {
-            setError('Something went wrong while getting data')
+            setError('Something went wrong while fetching data')
         }
     }
 
@@ -77,6 +77,7 @@ function DetailPage() {
                         <h2 className="detailpage-container__title">{upload.artist_name}</h2>
                         <h4 className="detailpage-container__subTitle">{upload.song_name}</h4>
                         <p className="detailpage-container__info">{upload.message}</p>
+                        {error && <p>{error}</p>}
                     </div>
                     {/*Laat onderstaande buttons alleen zien als je een admin bent*/}
                     {isAuthenticated && isAdmin ? (

@@ -145,6 +145,7 @@ function Home() {
                                 type="submit"
                             >Submit Demo</Button>
                             {/*geef de user feedback dat de demo goed was geupload*/}
+                            {error && <p>{error}</p>}
                             {createUserSuccess === true && <p>The demo was uploaded succesfully!</p>}
                         </fieldset>
                     </form>
