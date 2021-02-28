@@ -3,7 +3,7 @@ import './DashboardItem.css';
 import Button from "../button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt, faDownload } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 function DashboardItem({ title, subTitle, body, link }) {
     // Bijna identiek aan het listItem component.
@@ -11,6 +11,7 @@ function DashboardItem({ title, subTitle, body, link }) {
     // om door te linken naar de feedback pagina
     // en als download knop voor de geüploade file (is momenteel niet uitgewerkt)
     const history = useHistory();
+    const { id } = useParams();
 
     return (
         <>
@@ -37,10 +38,10 @@ function DashboardItem({ title, subTitle, body, link }) {
                 <Button
                     type="button"
                     className={"button button-dashboard button-dashboard__orange"}
-                    onClick={() => {history.push('/feedback')}}
+                    onClick={() => {history.push(`/feedback/${id}`)}}
                 >
                     <div className="dashboard__icon">
-                        <FontAwesomeIcon icon={faCommentAlt} onClick={() => {history.push('/feedback')}}/>
+                        <FontAwesomeIcon icon={faCommentAlt} onClick={() => {history.push(`/feedback/${id}`)}}/>
                     </div>
                     feedback
                 </Button>

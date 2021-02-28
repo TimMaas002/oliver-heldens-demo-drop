@@ -8,9 +8,11 @@ function UploadList() {
 
     const [uploads, setUploads] = useState([]);
     const [error, setError] = useState('');
+    const [formError, setFormError] = useState('');
+    const [protectedData, setProtectedData] = useState('');
 
     useEffect(() => {
-        async function getProtectedData() {
+        async function getUploadForms() {
             setError('');
             try {
                 const token = localStorage.getItem('token');
@@ -25,8 +27,29 @@ function UploadList() {
                 setError('Something went wrong while getting data')
             }
         }
-        getProtectedData();
+        getUploadForms();
     },[])
+
+    useEffect(() => {
+        async function getProtectedData() {
+            setFormError('');
+            try {
+                const token = localStorage.getItem('token');
+
+                const response = await axios.get(`http://localhost:8080/api/users/user`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+                setProtectedData(response.data);
+            } catch(e) {
+                setFormError('Er is iets misgegaan bij het ophalen van de data')
+            }
+        }
+        getProtectedData();
+    }, []);
 
     return (
         <>

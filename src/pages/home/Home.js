@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import './Home.css';
 import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 import axios from 'axios';
+import { useAuthState } from "../../context/AuthContext";
 
 function Home() {
     // maak hier de states aan voor het formulier
@@ -14,7 +15,30 @@ function Home() {
     const [uploadFormMessage, setUploadFormMessage] = useState('');
 
     const [error, setError] = useState('');
+    const [formError, setFormError] = useState('');
     const [createUserSuccess, setCreateUserSuccess] = useState(false);
+    const [protectedData, setProtectedData] = useState('')
+
+    useEffect(() => {
+        async function getProtectedData() {
+            setFormError('');
+            try {
+                const token = localStorage.getItem('token');
+
+                const response = await axios.get(`http://localhost:8080/api/users/user`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+                setProtectedData(response.data);
+            } catch(e) {
+                setFormError('Er is iets misgegaan bij het ophalen van de data')
+            }
+        }
+        getProtectedData();
+    }, []);
 
     async function handleSubmit(e) {
         setError('');
@@ -77,7 +101,7 @@ function Home() {
                                 className={"input-field input-field--white"}
                                 type="email"
                                 placeholder="oliverheldens@gmail.com"
-                                value={uploadFormEmail}
+                                value={protectedData.email}
                                 onChange={(e) => setUploadFormEmail(e.target.value)}
                             >
                                 Email Address

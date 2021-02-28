@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './Feedback.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import {useHistory, useParams} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Button from "../../components/button/Button";
 import InputField from "../../components/inputField/InputField";
 import axios from 'axios';
@@ -16,6 +16,29 @@ function Feedback() {
 
     const history = useHistory();
     const [createUserSuccess, setCreateUserSuccess] = useState(false);
+    const [protectedData, setProtectedData] = useState('');
+    const [formError, setFormError] = useState('');
+
+    useEffect(() => {
+        async function getProtectedData() {
+            setFormError('');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:8080/api/users/user', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+                setProtectedData(response.data);
+            } catch(e) {
+                setFormError('Er is iets misgegaan bij het ophalen van de data')
+            }
+        }
+
+        getProtectedData();
+    }, []);
 
     // Onderstaand zijn de 4 async functions om de feedbacktext uit de database op te vragen
     async function getFeedbackOne() {
@@ -27,7 +50,6 @@ function Feedback() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            // console.log(response.data);
             setMessage(response.data);
             setFeedbackMessage(message[0].message)
         } catch (e) {
@@ -44,7 +66,6 @@ function Feedback() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            // console.log(response.data);
             setMessage(response.data);
             setFeedbackMessage(message[1].message)
         } catch (e) {
@@ -61,7 +82,6 @@ function Feedback() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            // console.log(response.data);
             setMessage(response.data);
             setFeedbackMessage(message[2].message)
         } catch (e) {
@@ -78,7 +98,6 @@ function Feedback() {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            // console.log(response.data);
             setMessage(response.data);
             setFeedbackMessage(message[3].message)
         } catch (e) {

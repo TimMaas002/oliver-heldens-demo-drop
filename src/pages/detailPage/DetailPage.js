@@ -9,11 +9,13 @@ import { useAuthState } from "../../context/AuthContext";
 
 function DetailPage() {
 
-    const { isAdmin } = useAuthState();
+    const { isAdmin, isAuthenticated } = useAuthState();
 
     const { id } = useParams();
 
     const [error, setError] = useState('');
+    const [formError, setFormError] = useState('');
+    const [protectedData, setProtectedData] = useState('');
     const [upload, setUpload] = useState('');
 
     const history = useHistory()
@@ -41,6 +43,27 @@ function DetailPage() {
         }
     }
 
+    useEffect(() => {
+        async function getProtectedData() {
+            setFormError('');
+            try {
+                const token = localStorage.getItem('token');
+
+                const response = await axios.get(`http://localhost:8080/api/users/user`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+                setProtectedData(response.data);
+            } catch(e) {
+                setFormError('Er is iets misgegaan bij het ophalen van de data')
+            }
+        }
+        getProtectedData();
+    }, []);
+
     return (
         <>
             <div className="background-img__detailpage">
@@ -56,7 +79,7 @@ function DetailPage() {
                         <p className="detailpage-container__info">{upload.message}</p>
                     </div>
                     {/*Laat onderstaande buttons alleen zien als je een admin bent*/}
-                    {isAdmin ? (
+                    {isAuthenticated && isAdmin ? (
                         <div className="detailpage-container__buttons">
                             <Button
                                 type="button"
@@ -71,10 +94,10 @@ function DetailPage() {
                             <Button
                                 type="button"
                                 className={"button button-detailpage button-detailpage__orange"}
-                                onClick={() => {history.push('/feedback')}}
+                                onClick={() => {history.push(`/feedback`)}}
                             >
                                 <div className="detailpage__icon">
-                                    <FontAwesomeIcon icon={faCommentAlt} onClick={() => {history.push('/feedback')}}/>
+                                    <FontAwesomeIcon icon={faCommentAlt} onClick={() => {history.push(`/feedback`)}}/>
                                 </div>
                                 feedback
                             </Button>

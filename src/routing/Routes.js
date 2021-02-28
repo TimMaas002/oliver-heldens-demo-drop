@@ -28,9 +28,9 @@ function Routes() {
                 <PrivateRoute path="/uploadforms/:id">
                     <DetailPage/>
                 </PrivateRoute>
-                <AdminPrivateRoute path="/dashboard">
+                <PrivateRoute path="/dashboard">
                     <Dashboard/>
-                </AdminPrivateRoute>
+                </PrivateRoute>
                 <AdminPrivateRoute path="/feedback/:id">
                     <Feedback/>
                 </AdminPrivateRoute>
